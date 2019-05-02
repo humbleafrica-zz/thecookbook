@@ -38,7 +38,7 @@ class Recipe(models.Model):
          (SIDE, 'Side Dish'),
          (DRINK, 'Drink'),
          (COCKTAIL, 'Cocktail'),
-         (CANAPE, 'Canapé'),
+         (CANAPE, 'Canape'),
         )
     
     #difficulty choices
@@ -122,14 +122,16 @@ class Recipe(models.Model):
     fibre = models.DecimalField(max_digits=5, decimal_places=2, default="", blank=True)
     protein = models.DecimalField(max_digits=5, decimal_places=2, default="", blank=True)
     salt = models.DecimalField(max_digits=5, decimal_places=2, default="", blank=True)
-    publisher = models.CharField('type', max_length = 3, choices = PUBLISHER_CHOICE)
-    allergy = models.CharField('type', max_length = 3, choices = ALERGY_CHOICE)
-    difficulty = models.CharField('type', max_length = 3, choices = DIFF_TYPE_CHOICES)
-    recipe_type = models.CharField('type', max_length = 3, choices = RECIPE_TYPE_CHOICES)
-    cuisine = models.CharField('type', max_length = 3, choices = CUISINE_CHOICE)
+    publisher = models.CharField('publisher', max_length = 3, choices = PUBLISHER_CHOICE)
+    allergy = models.CharField('allergy', max_length = 3, choices = ALERGY_CHOICE)
+    difficulty = models.CharField('difficulty', max_length = 3, choices = DIFF_TYPE_CHOICES)
+    recipe_type = models.CharField('recipe Type', max_length = 3, choices = RECIPE_TYPE_CHOICES)
+    cuisine = models.CharField('cuisine', max_length = 20, choices = CUISINE_CHOICE)
     published_date  = models.DateField((u"Date Published"), blank=True)
     uploaded_date = models.DateField((u"Date Uploaded"), blank=True)
     update = models.DateField((u"Last Updated"), blank=True)
+    image = models.ImageField()
+    comments = models.IntegerField(default=0)
     
     # meta class
     class Meta:
