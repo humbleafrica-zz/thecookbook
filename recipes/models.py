@@ -141,8 +141,12 @@ class Recipe(models.Model):
     # to string method
     def __str__(self):
          return self.name
+    
+    def recipes(self):
+       # self.name
+        self.save()
          
-    #published
+    """#published
     def publish(self):
         self.published_date = timezone.now()
     
@@ -152,11 +156,12 @@ class Recipe(models.Model):
          
     # save method
     def save(self, *args, **kwargs):
-      """ add()
+       add()
         delete()
         update()
         super().save(*args, **kwargs)  # Call the "real" save() method."""
     
     # absolute url method
     def get_absolute_url(self):
-        return reverse('company_details', kwargs={'pk': self.id})
+        return reverse('recipe_details', kwargs={'pk': self.id})
+    
