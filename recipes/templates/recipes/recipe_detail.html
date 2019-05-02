@@ -1,0 +1,23 @@
+{% extends 'recipes/base.html' %} {% block content %} {% block title %}{{ recipe }} Details {% endblock %}
+
+<body>
+    <div class="container wrapper">
+        <h1 class="header-index">Because the way to one's heart</h1>
+        <div class="row">
+            {% if recipe.name %}
+            <div>
+                <h2>{{ recipe.name }}</h2>
+                <p>
+                    {{ recipe.description }}
+                </p>
+            </div>
+            {% endif %}
+            <p>
+                {{ recipe.publisher }}
+            </p>
+        </div>
+        <h1 class="header-index">is via food</h1>
+    </div>
+
+</body>
+{% endblock %}

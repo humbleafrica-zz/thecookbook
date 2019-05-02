@@ -93,9 +93,12 @@ h6 {
     text-shadow: 1px 1px #000000;
 }
 
+.table-dark{
+    opacity:.8;
+}
 .footer {
     position: relative;
-    bottom: 0;
+    bottom: 0 !important;
     width: 100%;
     background: #343A40;
     color: #EEE;

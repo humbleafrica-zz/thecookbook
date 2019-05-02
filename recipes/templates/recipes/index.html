@@ -4,17 +4,17 @@
     <div class="container wrapper">
         <h1 class="header-index">Because the way to one's heart</h1>
         <div class="row">
-            <div class="breakfast meal col">
+            <div class="breakfast meal col" onclick="document.location='{% url 'breakfast' %}'">
                 <p class="food">
                     Breakfast
                 </p>
             </div>
-            <div class="lunch meal col">
+            <div class="lunch meal col" onclick="document.location='{% url 'lunch' %}'">
                 <p class="food">
                     Lunch
                 </p>
             </div>
-            <div class="dinner meal col">
+            <div class="dinner meal col" onclick="document.location='{% url 'dinner' %}'">
                 <p class="food">
                     Dinner
                 </p>
