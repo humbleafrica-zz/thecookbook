@@ -1,4 +1,4 @@
-from django.shortcuts import render, render_to_response,  get_object_or_404
+from django.shortcuts import render, render_to_response,  get_object_or_404, redirect
 from django.utils import timezone #importing the timezone model
 from recipes.models import Recipe #importing the recipe model
 from forms import RecipeForm
@@ -9,18 +9,17 @@ def recipe_add_view(request):
     if form.is_valid():
         form.save()
         form = RecipeForm()
-        
     context ={
         'form': form,
     }
     return render(request, 'recipes/recipe_add.html', context)
-       
+      
 
-#index view
+#index view###################################################
 def index(request):
     return render(request, 'recipes/index.html', {})
 
-#breakfast view
+#breakfast view###################################################
 def breakfast(request, pk):
     brk= get_object_or_404(Recipe, pk=pk)
     context ={
@@ -28,11 +27,11 @@ def breakfast(request, pk):
     }
     return render(request, 'recipes/breakfast.html', context)
 
-#lunch view
+#lunch view###################################################
 def lunch(request):
     return render(request, 'recipes/lunch.html', {})
 
-#dinner view
+#dinner view###################################################
 def dinner(request):
     return render(request, 'recipes/dinner.html', {})
 
@@ -40,11 +39,22 @@ def dinner(request):
 def dessert(request):
     return render(request, 'recipes/dessert.html', {})
 
-#recipe_detail view
+#recipe_detail view###################################################
 def recipe_detail(request, pk):
     obj= get_object_or_404(Recipe, pk=pk)
     context ={
         'recipe': obj,
     }
     return render(request, 'recipes/recipe/recipe_detail.html', context)
+#recipe_delete view###################################################
+def recipe_delete(request, pk):
+    obj= get_object_or_404(Recipe, pk=pk)
+    #confirming delte
+    if request.method == 'POST':
+        obj.delete()
+        return redirect('../../')
+    context ={
+        'recipe': obj,
+    }
+    return render(request, 'recipes/recipe/recipe_delete.html', context)
     
