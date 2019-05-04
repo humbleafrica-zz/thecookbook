@@ -4,6 +4,7 @@
     font-family: tahoma;
 }
 
+
 body {
     background: white url('/static/images/background.jpg')no-repeat center center;
     -webkit-background-size: cover;
@@ -12,11 +13,13 @@ body {
     background-size: cover;
     text-align: center;
     position: relative;
+
+    display: flex;
+    flex-direction: column;
 }
 
 .wrapper {
-    height: 100%;
-    margin: 150px auto;
+    margin: 230px auto;
 }
 
 
@@ -55,6 +58,7 @@ h6 {
     -o-background-size: contain;
     background-size: contain;
     color: #E21737;
+    text-shadow: 1px 1px #000000;
 }
 
 /* lunch home tabe styling*/
@@ -66,6 +70,7 @@ h6 {
     -o-background-size: contain;
     background-size: contain;
     color: #FFCB00;
+    text-shadow: 1px 1px #000000;
 }
 
 /* dinner home tabe styling*/
@@ -77,6 +82,7 @@ h6 {
     -o-background-size: contain;
     background-size: contain;
     color: #009941;
+    text-shadow: 1px 1px #000000;
 }
 
 .food {
@@ -87,23 +93,91 @@ h6 {
     transform: translate(-50%, -50%);
 }
 
-.favourites{
+.favourites {
     color: #f1f1f1;
-    font-weight:bold;
+    font-weight: bold;
+    text-shadow: 1px 1px #000000;
+    margin: .5em 0em 0em 3em;
+}
+
+.table-dark {
+    opacity: .8;
+}
+
+.detail {
+    color: #ffffff;
     text-shadow: 1px 1px #000000;
 }
 
-.table-dark{
-    opacity:.8;
+
+/* ############# tabale styling ################*/
+
+@media only screen and (max-width: 800px) {
+    /* Force table to not be like tables anymore */
+    #no-more-tables table,
+    #no-more-tables thead,
+    #no-more-tables tbody,
+    #no-more-tables th,
+    #no-more-tables td,
+    #no-more-tables tr {
+        display: block;
+    }
+
+    /* Hide table headers (but not display: none;, for accessibility) */
+    #no-more-tables thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    #no-more-tables tr {
+        border: 1px solid #ccc;
+    }
+
+    #no-more-tables td {
+        /* Behave like a "row" */
+        border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        padding-left: 50%;
+        white-space: normal;
+        text-align: left;
+    }
+
+    #no-more-tables td:before {
+        /* Now like a table header */
+        position: absolute;
+        /* Top/left values mimic padding */
+        top: 6px;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        text-align: left;
+        font-weight: bold;
+    }
+
+    /*
+        Label the data
+        */
+    #no-more-tables td:before {
+        content: attr(data-title);
+    }
 }
+
+
+/*############footer styling################*/
+
 .footer {
-    position: relative;
-    bottom: 0 !important;
+    clear: both;
+    /*position: absolute;*/
+    bottom: -1px !important;
     width: 100%;
     background: #343A40;
     color: #EEE;
     padding: 5px;
-    height: 80px;
+    min-height: 80px;
     opacity: .5;
-    border-top:3px solid #000000;
+    border-top: 3px solid #000000;
+    margin-bottom: 0;
 }

@@ -2,18 +2,17 @@
 
 <body>
     <div class="container wrapper">
-        <h1 class="header-index">Because the way to one's heart</h1>
+        <h1 class="header-index">{{ recipe }} Details</h1>
         <div class="row">
-            {% if recipe.name %}
             <div>
                 <h2>{{ recipe.name }}</h2>
                 <p>
                     {{ recipe.description }}
                 </p>
             </div>
-            {% endif %}
+
             <p>
-                {{ recipe.publisher }}
+                {{ recipe.serves }}
             </p>
         </div>
         <h1 class="header-index">is via food</h1>
