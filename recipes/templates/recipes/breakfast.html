@@ -16,11 +16,15 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td data-title="Meal">{{ breakfast.name }}</td>
-                        <td data-title="Appearance"><img src="/event_54OPtZf.PNG">{{ breakfast.image }}</img></td>
-                        <td data-title="Difficulty">{{ breakfast.difficulty }}</td>
-                        <td data-title="Suits">{{ breakfast.suits }}</td>
-                        <td data-title="Cuisine">{{ breakfast.cuisine }}</td>
+                        {{ object_list }}
+                        
+                        {% for instance in object_list %}
+                        <td data-title="Meal">{{ instance.name }}</td>
+                        <td data-title="Appearance"><img src="/event_54OPtZf.PNG">{{ instance.image }}</img></td>
+                        <td data-title="Difficulty">{{ instance.difficulty }}</td>
+                        <td data-title="Suits">{{ instance.suits }}</td>
+                        <td data-title="Cuisine">{{ instance.cuisine }}</td>
+                        {% endfor %}
                     </tr>
                 </tbody>
             </table>

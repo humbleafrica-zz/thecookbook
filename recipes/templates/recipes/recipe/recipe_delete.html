@@ -1,0 +1,16 @@
+{% extends 'recipes/base.html' %} {% block content %} {% block title %}Breakfast Recipes, Your Way{% endblock %}
+
+<body>
+    <div class="container wrapper">
+        <h1 class="header-index">Delete A Recipe</h1>
+        <form method="POST" action="{{ recipe_delete }}." class="row"> {% csrf_token %}
+            <div class="row container-fluid delrecipe">
+                {{ form.as_p }}
+            </div>
+            <input class="col btn btn-danger" type="submit" value="Delete" />
+            <input class="col btn btn-warning" type="submit" value="Update" />
+        </form>
+    </div>
+</body>
+
+{% endblock %}

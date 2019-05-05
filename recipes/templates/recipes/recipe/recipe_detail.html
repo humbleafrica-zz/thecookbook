@@ -2,12 +2,12 @@
 
 <body>
     <div class="container wrapper">
-        <h1 class="header-index">{{ recipe }} Details</h1>
+        <h2 class="header-index">{{ recipe }} Details</h2>
         <div class="row">
-            <div>
-                <h2>{{ recipe.name }}</h2>
+            <div class="recipe-detail">
+                <h3>{{ recipe.name }}</h3>
                 <p>
-                    {{ recipe.description }}
+                    {{ recipe.instructions }}
                 </p>
             </div>
 
@@ -15,7 +15,7 @@
                 {{ recipe.serves }}
             </p>
         </div>
-        <h1 class="header-index">is via food</h1>
+        <h1 class="header-index">Let's Get You Satisfied</h1>
     </div>
 
 </body>

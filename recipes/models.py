@@ -31,7 +31,6 @@ class Recipe(models.Model):
          (DINNER,'DINNER'),
          (STARTER,'STARTER'),
          (DESSERT,'DESSERT'),
-         (STARTER, 'STARTER'),
          (BRUNCH, 'BRUNCH'),
          (SNACK, 'SNACK'),
          (MAIN, 'MAIN COURSE'),
@@ -76,7 +75,7 @@ class Recipe(models.Model):
     SOYA = 'SOYA'
     WHEAT = 'WHEAT'
     FISH = 'FISH'
-    
+    PORK = 'PORK'
     ALERGY_CHOICE =(
         (MILK, 'MILK'),
         (EGG, 'EGG'),
@@ -84,6 +83,7 @@ class Recipe(models.Model):
         (SOYA, 'SOYA'),
         (WHEAT, 'WHEAT'),
         (FISH, 'FISH'),
+        (PORK, 'PORK'),
         )
     #cuisine type
     
@@ -107,13 +107,13 @@ class Recipe(models.Model):
     
      # DATABASE FIELDS
     name = models.CharField(max_length=200)
-    description = models.TextField(max_length=4000)
     serves = models.IntegerField()
-    prep_time = models.DurationField(u"Preparation Time")
-    cook_time = models.DurationField(u"Cooking Time")
+    prep_time = models.IntegerField(u"Prep Min")
+    cook_time = models.IntegerField(u"Cook Min")
+    description = models.TextField(max_length=4000)
     ingredients = models.TextField(max_length=1500)
     instructions = models.TextField(max_length=15000)
-    suits = models.CharField(max_length=1500)
+    suits = models.CharField(max_length=20)
     calories = models.DecimalField(max_digits=4, decimal_places=2, default="", blank=True)
     fat = models.DecimalField(max_digits=4, decimal_places=2, default="", blank=True)
     saturates = models.DecimalField(max_digits=4, decimal_places=2, default="", blank=True)
@@ -131,7 +131,7 @@ class Recipe(models.Model):
     uploaded_date = models.DateField((u"Date Uploaded"), blank=True)
     update = models.DateField((u"Last Updated"), blank=True)
     image = models.ImageField(blank=True)
-    comments = models.IntegerField(default=0)
+    comments = models.TextField(max_length=1500, blank=True)
     
     # meta class
     class Meta:
@@ -141,27 +141,9 @@ class Recipe(models.Model):
     # to string method
     def __str__(self):
          return self.name
-    
-    def recipes(self):
-       # self.name
-        self.save()
-         
-    #published
-    def publish(self):
-        self.published_date = timezone.now()
-    
-    #uploaded
-    def uploaded(self):
-        self.uploaded_date = timezone.now()
-         
-    # save method
-    def save(self, *args, **kwargs):
-     """  add()
-        delete()
-        update()
-        super().save(*args, **kwargs)  # Call the "real" save() method.  """
-    
+         self.save()
+   
     # absolute url method
     def get_absolute_url(self):
-        return reverse('recipe_details', kwargs={'pk': self.id})
+        return reverse('recipe_details', kwargs={'pk': self.pk})
   

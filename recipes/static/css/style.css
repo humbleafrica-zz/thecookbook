@@ -11,9 +11,7 @@ body {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    text-align: center;
     position: relative;
-
     display: flex;
     flex-direction: column;
 }
@@ -35,8 +33,24 @@ h6 {
 }
 
 .header-index {
-    font-size: 80px;
     text-shadow: 1px 1px #1f1f1f;
+}
+
+.recipe-detail {
+    padding: 0 10px;
+    color: #000000;
+    border-radius: 5px;
+    background-color: #ffffff;
+    opacity: .8;
+}
+
+.logo {
+    position: absolute;
+    top: 160px;
+    margin-left: auto;
+    margin-right: auto;
+    left: 47%;
+
 }
 
 .meal {
@@ -97,7 +111,7 @@ h6 {
     color: #f1f1f1;
     font-weight: bold;
     text-shadow: 1px 1px #000000;
-    margin: .5em 0em 0em 3em;
+    margin: .5em 0em 0em 6em;
 }
 
 .table-dark {
@@ -110,9 +124,18 @@ h6 {
 }
 
 
-/* ############# tabale styling ################*/
+/* ############# table styling ################*/
 
 @media only screen and (max-width: 800px) {
+
+    .logo {
+        position: absolute;
+        top: 160px;
+        margin-left: auto;
+        margin-right: auto;
+        left: 40%;
+
+    }
     /* Force table to not be like tables anymore */
     #no-more-tables table,
     #no-more-tables thead,
@@ -165,6 +188,24 @@ h6 {
     }
 }
 
+/*################add recipe view styling######################*/
+
+form {
+    color: #ffffff;
+    text-shadow: 1px 1px #000000;
+    background-color: #f1f1f1;
+    opacity: 0.9;
+    border-radius: 5px;
+}
+
+.frow {
+    max-width: 99%;
+}
+
+.addrecipe,
+.delrecipe {
+    margin: 0 auto;
+}
 
 /*############footer styling################*/
 
