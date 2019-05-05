@@ -123,7 +123,21 @@ def recipe_add_view(request):
     }
     
     return render(request, 'recipes/recipe_add.html', context)
-      
+
+#update recipe view
+def recipe_update(request, pk):
+    queryset = Recipe.objects.filter(Recipe, pk=pk)
+    form = RecipeForm(request.POST or None, initial=queryset)
+    if request.method == 'POST':
+        form.save()
+        alert('Recipe Saved')
+        #form = RecipeForm()
+    context ={
+        'form': form,
+    }
+    
+    return render(request, 'recipes/recipe_update.html', context)
+     
 #recipe_delete view###################################################
 def recipe_delete(request, pk):
     obj= get_object_or_404(Recipe, pk=pk)
