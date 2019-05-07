@@ -1,0 +1,31 @@
+{% extends 'recipes/base.html' %} {% block content %} {% block title %}{{ recipe }} Details {% endblock %}
+
+<body>
+    <div class="container wrapper">
+        <h2 class="header-index">{{ name }} Details</h2>
+        <div class="row">
+            <div class="recipe-detail">
+                {% for instance in object_list %}
+                <tr>
+                    <td data-title="Number"><a href="/recipes/recipe/detail/{{ instance.pk }}/">{{ instance.pk }} </a></td>
+                    <td data-title="Name"><a href="/recipes/recipe/detail/{{ instance.pk}}/">{{ instance.name }} </a></td>
+                    <td data-title="Appearance">
+                        <img src="/event_54OPtZf.PNG">{{ instance.image }}</img>
+                    </td>
+                    <td data-title="Suits">{{ instance.recipe_type }}</td>
+                    <td data-title="Difficulty">{{ instance.difficulty }}</td>
+                    <td data-title="Suits">{{ instance.suits }}</td>
+                    <td data-title="Cuisine">{{ instance.cuisine }}</td>
+                </tr>
+                {% endfor %}
+            </div>
+
+            <p>
+                {{ recipe.serves }}
+            </p>
+        </div>
+        <h1 class="header-index">Let's Get You Satisfied</h1>
+    </div>
+
+</body>
+{% endblock %}

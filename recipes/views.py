@@ -1,12 +1,14 @@
 from django.shortcuts import render, render_to_response,  get_object_or_404, redirect
 from django.utils import timezone #importing the timezone model
-from recipes.models import Recipe #importing the recipe model
-from forms import RecipeForm
+from .models import Recipe #importing the recipe model
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.core.urlresolvers import reverse_lazy
+from forms import RecipeForm, RawRecipeForm
 
 
 #index view###################################################
 def index(request):
-    return render(request, 'recipes/index.html', {})
+    return render(request, 'recipes/index.html')
 
 #breakfast view###################################################
 def breakfast(request):
@@ -105,12 +107,14 @@ def canape(request):
     return render(request, 'recipes/canape.html', context)
 
 #recipe_detail view###################################################
-def recipe_detail(request, pk):
-    obj= get_object_or_404(Recipe, pk=pk)
+def recipe_detail(request,pk):
+    obj= Recipe.objects.get(pk=pk)
+    if request.method =='POST':
+        obj = Recipe.objects.get(request.POST)
     context ={
-        'recipe': obj,
+        'object': obj,
     }
-    return render(request, 'recipes/recipe/recipe_detail.html', context)
+    return render(request, 'recipes/detail.html', context)
     
 #add recipe view
 def recipe_add_view(request):
@@ -121,22 +125,36 @@ def recipe_add_view(request):
     context ={
         'form': form,
     }
-    
     return render(request, 'recipes/recipe_add.html', context)
 
-#update recipe view
+class RecipeCreate(CreateView):
+    class Meta:
+        model = Recipe
+        fields = '__all__'
+
+class RecipeUpdate(UpdateView):
+    class Meta:
+        model = Recipe
+        fields = '__all__'
+        
+class RecipeDelete(DeleteView):
+    class Meta:
+        model = Recipe
+        fields = '__all__'
+    
+"""#update recipe view
 def recipe_update(request, pk):
     queryset = Recipe.objects.filter(Recipe, pk=pk)
     form = RecipeForm(request.POST or None, initial=queryset)
     if request.method == 'POST':
         form.save()
-        alert('Recipe Saved')
         #form = RecipeForm()
     context ={
         'form': form,
     }
-    
-    return render(request, 'recipes/recipe_update.html', context)
+   
+   return render(request, 'recipes/recipe_update.html', context) 
+
      
 #recipe_delete view###################################################
 def recipe_delete(request, pk):
@@ -150,4 +168,4 @@ def recipe_delete(request, pk):
         'form': form,
     }
     return render(request, 'recipes/recipe/recipe_delete.html', context)
-    
+    """ 

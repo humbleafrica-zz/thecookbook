@@ -55,6 +55,7 @@ class Recipe(models.Model):
     
     #publisher choices
     MAGAZINE = 'MAGAZINE'
+    NEWSPAPER = 'NEWSPAPER'
     WEBSITE = 'WEBSITE'
     BOOK = 'BOOK'
     SOCIAL_CLUB = 'SOCIAL CLUB'
@@ -62,6 +63,7 @@ class Recipe(models.Model):
     
     PUBLISHER_CHOICE =(
         (MAGAZINE, 'MAGAZINE'),
+        (NEWSPAPER, 'NEWSPAPER'),
         (WEBSITE, 'WEBSITE'),
         (BOOK, 'BOOK'),
         (SOCIAL_CLUB, 'SOCIAL CLUB'),
@@ -107,31 +109,26 @@ class Recipe(models.Model):
     
      # DATABASE FIELDS
     name = models.CharField(max_length=200)
+    method = models.CharField(max_length=50)
     serves = models.IntegerField()
+    scalable = models.BooleanField(default=True)
     prep_time = models.IntegerField(u"Prep Min")
     cook_time = models.IntegerField(u"Cook Min")
     description = models.TextField(max_length=4000)
     ingredients = models.TextField(max_length=1500)
     instructions = models.TextField(max_length=15000)
     suits = models.CharField(max_length=20)
-    calories = models.DecimalField(max_digits=4, decimal_places=2, default="", blank=True)
-    fat = models.DecimalField(max_digits=4, decimal_places=2, default="", blank=True)
-    saturates = models.DecimalField(max_digits=4, decimal_places=2, default="", blank=True)
-    carbs = models.DecimalField(max_digits=4, decimal_places=2, default="", blank=True)
-    sugars = models.DecimalField(max_digits=4, decimal_places=2, default="", blank=True)
-    fibre = models.DecimalField(max_digits=4, decimal_places=2, default="", blank=True)
-    protein = models.DecimalField(max_digits=4, decimal_places=2, default="", blank=True)
-    salt = models.DecimalField(max_digits=4, decimal_places=2, default="", blank=True)
     publisher = models.CharField('publisher', max_length = 20, choices = PUBLISHER_CHOICE)
     allergy = models.CharField('allergy', max_length = 20, choices = ALERGY_CHOICE)
     difficulty = models.CharField('difficulty', max_length = 10, choices = DIFF_TYPE_CHOICES)
     recipe_type = models.CharField('recipe Type', max_length = 20, choices = RECIPE_TYPE_CHOICES)
     cuisine = models.CharField('cuisine', max_length = 20, choices = CUISINE_CHOICE)
     published_date  = models.DateField((u"Date Published"), blank=True)
-    uploaded_date = models.DateField((u"Date Uploaded"), blank=True)
-    update = models.DateField((u"Last Updated"), blank=True)
+    uploaded_date = models.DateField((u"Date Uploaded"), auto_now_add=True, editable = False)
+    update = models.DateField((u"Last Updated"), auto_now_add=True, editable = False)
     image = models.ImageField(blank=True)
-    comments = models.TextField(max_length=1500, blank=True)
+    notes = models.TextField(max_length=1500, blank=True)
+    author = models.CharField(max_length=50)
     
     # meta class
     class Meta:

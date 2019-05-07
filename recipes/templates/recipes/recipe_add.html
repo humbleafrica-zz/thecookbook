@@ -3,7 +3,7 @@
 <body>
     <div class="container wrapper">
         <h1 class="header-index">Add A New Recipe</h1>
-        <form method="POST" action="{{ recipe_add }}." class="row"> {% csrf_token %}
+        <form method="POST" action="{{ recipe_add }}." class="row" enctype="multipart/form-data"> {% csrf_token %}
             <div class="row container-fluid addrecipe">
                 {{ form.as_p }}
             </div>
