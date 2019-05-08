@@ -4,10 +4,13 @@ from django.utils import timezone
 from django.db import models
 from django.conf.urls import include, url
 from django.core.urlresolvers import reverse
+#from django_countries.fields import CountryField
+
 #from django.urls import reverse
 
 #from django.urls import reverse
 # Create your models here.
+
 
 #recipe model
 class Recipe(models.Model):
@@ -128,7 +131,9 @@ class Recipe(models.Model):
     update = models.DateField((u"Last Updated"), auto_now_add=True, editable = False)
     image = models.ImageField(blank=True)
     notes = models.TextField(max_length=1500, blank=True)
+    country = models.CharField(max_length=50)
     author = models.CharField(max_length=50)
+
     
     # meta class
     class Meta:
@@ -143,4 +148,7 @@ class Recipe(models.Model):
     # absolute url method
     def get_absolute_url(self):
         return reverse('detail', kwargs={'pk': self.pk})
-  
+        
+'''class Country(models.Model):
+    recipe = models.ForeignKey(Recipe,on_delete=models.CASCADE)
+    country = CountryField()'''
