@@ -18,17 +18,17 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for instance in object_list %}
+                    {{ object_list }} {% for instance in object_list %}
                     <tr>
-                        <td data-title="Number"><a href="{% url 'recipes: detail' recipe.pk %}">{{ instance.pk }} </a></td>
-                        <td data-title="Name"><a href="{% url 'recipes: detail' recipe.pk %}">{{ instance.name }} </a></td>
-                        <td data-title="Appearance">
-                            <img src="/event_54OPtZf.PNG">{{ instance.image }}</img>
+                        <td data-title="Number"><a href="/recipes/recipe/detail/{{ instance.pk }}/">{{ instance.pk }} </a></td>
+                        <td data-title="Name"><a href="/recipes/recipe/detail/{{ instance.pk}}/">{{ instance.name }} </a></td>
+                        <td data-title="Appearance"><a href="/recipes/recipe/detail/{{ instance.pk }}/">
+                            <img src="/event_54OPtZf.PNG">{{ instance.image }}</img></a>
                         </td>
-                        <td data-title="Suits">{{ instance.recipe_type }}</td>
-                        <td data-title="Difficulty">{{ instance.difficulty }}</td>
-                        <td data-title="Suits">{{ instance.suits }}</td>
-                        <td data-title="Cuisine">{{ instance.cuisine }}</td>
+                        <td data-title="Suits"><a href="/recipes/recipe/detail/{{ instance.pk }}/">{{ instance.recipe_type }}</a></td>
+                        <td data-title="Difficulty"><a href="/recipes/recipe/detail/{{ instance.pk }}/">{{ instance.difficulty }}</a></td>
+                        <td data-title="Suits"><a href="/recipes/recipe/detail/{{ instance.pk }}/">{{ instance.suits }}</a></td>
+                        <td data-title="Cuisine"><a href="/recipes/recipe/detail/{{ instance.pk }}/">{{ instance.cuisine }}</a></td>
                     </tr>
                     {% endfor %}
                 </tbody>

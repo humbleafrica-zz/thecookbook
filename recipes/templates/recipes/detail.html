@@ -2,27 +2,45 @@
 
 <body>
     <div class="container wrapper">
-        <h2 class="header-index">{{ name }} Details</h2>
+        <h2 class="header-index">{{ instance.name }} Details</h2>
         <div class="row">
-            <div class="recipe-detail">
-                {% for instance in object_list %}
-                <tr>
-                    <td data-title="Number"><a href="/recipes/recipe/detail/{{ instance.pk }}/">{{ instance.pk }} </a></td>
-                    <td data-title="Name"><a href="/recipes/recipe/detail/{{ instance.pk}}/">{{ instance.name }} </a></td>
-                    <td data-title="Appearance">
-                        <img src="/event_54OPtZf.PNG">{{ instance.image }}</img>
-                    </td>
-                    <td data-title="Suits">{{ instance.recipe_type }}</td>
-                    <td data-title="Difficulty">{{ instance.difficulty }}</td>
-                    <td data-title="Suits">{{ instance.suits }}</td>
-                    <td data-title="Cuisine">{{ instance.cuisine }}</td>
-                </tr>
-                {% endfor %}
-            </div>
+                <table class="table table-dark table-bordered table-striped table-condensed">
+                    <thead>
+                        <tr>
+                            <th scope="col">Meal No.</th>
+                            <th scope="col">Meal Name</th>
+                            <th scope="col">Serves</th>
+                            <th scope="col">Scalable</th>
+                            <th scope="col">Type</th>
+                            <th scope="col">Difficulty</th>
+                            <th scope="col">Suits</th>
+                            <th scope="col">Cuisine</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for instance in object_list %}
+                        <tr>
+                            <td data-title="Number"><a href="/recipes/recipe/detail/{{ instance.pk }}/">{{ instance.pk }} </a></td>
+                            <td data-title="Name"><a href="/recipes/recipe/detail/{{ instance.pk}}/">{{ instance.name }} </a></td>
+                            <td data-title="Appearance"><a href="/recipes/recipe/detail/{{ instance.pk }}/">
+                            {{ instance.serves }}
+                            </td>
+                            <td data-title="Appearance"><a href="/recipes/recipe/detail/{{ instance.pk }}/">
+                            {{ instance.scalable }}
+                            </td>
+                            <td data-title="Suits"><a href="/recipes/recipe/detail/{{ instance.pk }}/">{{ instance.recipe_type }}</a></td>
+                            <td data-title="Difficulty"><a href="/recipes/recipe/detail/{{ instance.pk }}/">{{ instance.difficulty }}</a></td>
+                            <td data-title="Suits"><a href="/recipes/recipe/detail/{{ instance.pk }}/">{{ instance.suits }}</a></td>
+                            <td data-title="Cuisine"><a href="/recipes/recipe/detail/{{ instance.pk }}/">{{ instance.cuisine }}</a></td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" data-title="Cuisine"><a href="/recipes/recipe/detail/{{ instance.pk }}/"><img height="160" src="/static/images/dinner.jpg">{{ instance.image }}</img></a></td>
+                            <td colspan="7" data-title="Cuisine"><a href="/recipes/recipe/detail/{{ instance.pk }}/">{{ instance.description }}</a></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
 
-            <p>
-                {{ recipe.serves }}
-            </p>
         </div>
         <h1 class="header-index">Let's Get You Satisfied</h1>
     </div>

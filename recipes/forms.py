@@ -6,7 +6,6 @@ class RecipeForm(forms.ModelForm):
       model = Recipe
       fields ='__all__'
       
-
 class RawRecipeForm(forms.Form):
     class Meta:
       model = Recipe

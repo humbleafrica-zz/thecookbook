@@ -1,7 +1,6 @@
 from django.shortcuts import render, render_to_response,  get_object_or_404, redirect
 from django.utils import timezone #importing the timezone model
 from .models import Recipe #importing the recipe model
-from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.core.urlresolvers import reverse_lazy
 from forms import RecipeForm, RawRecipeForm
 
@@ -108,11 +107,9 @@ def canape(request):
 
 #recipe_detail view###################################################
 def recipe_detail(request,pk):
-    obj= Recipe.objects.get(pk=pk)
-    if request.method =='POST':
-        obj = Recipe.objects.get(request.POST)
-    context ={
-        'object': obj,
+    queryset = Recipe.objects.filter(pk=pk)
+    context={
+        "object_list": queryset
     }
     return render(request, 'recipes/detail.html', context)
     
@@ -126,34 +123,49 @@ def recipe_add_view(request):
         'form': form,
     }
     return render(request, 'recipes/recipe_add.html', context)
-
-class RecipeCreate(CreateView):
-    class Meta:
-        model = Recipe
-        fields = '__all__'
-
-class RecipeUpdate(UpdateView):
-    class Meta:
-        model = Recipe
-        fields = '__all__'
-        
-class RecipeDelete(DeleteView):
-    class Meta:
-        model = Recipe
-        fields = '__all__'
+   
+#return all recipes
+def recipes(request):
+    queryset = Recipe.objects.all()
+    context={
+        "object_list": queryset
+    }
+    return render(request, 'recipes/all.html', context)
     
-"""#update recipe view
+#update recipe view
 def recipe_update(request, pk):
-    queryset = Recipe.objects.filter(Recipe, pk=pk)
-    form = RecipeForm(request.POST or None, initial=queryset)
-    if request.method == 'POST':
-        form.save()
-        #form = RecipeForm()
+    '''initial_data={
+         'name':'{{ instance}}' 
+        method 
+        serves 
+        scalable 
+        prep_time 
+        cook_time 
+        description 
+        ingredients 
+        instructions
+        suits 
+        publisher 
+        allergy 
+        difficulty 
+        recipe_type 
+        cuisine 
+        published_date 
+        uploaded_date 
+        update 
+        image 
+        notes 
+        author
+        
+    }'''
+  
+    #retrieve RecipeForm() data
+    obj = Recipe.objects.get(request, pk=pk)
+    form = RecipeForm(request.POST or None, instance=obj)
     context ={
         'form': form,
     }
-   
-   return render(request, 'recipes/recipe_update.html', context) 
+    return render(request, 'recipes/recipe_add.html', context) 
 
      
 #recipe_delete view###################################################
@@ -168,4 +180,3 @@ def recipe_delete(request, pk):
         'form': form,
     }
     return render(request, 'recipes/recipe/recipe_delete.html', context)
-    """ 
