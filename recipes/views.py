@@ -112,9 +112,17 @@ def recipe_detail(request,pk):
         "object_list": queryset
     }
     return render(request, 'recipes/detail.html', context)
+
+#recipe_preparationview###################################################
+def preparation(request,pk):
+    queryset = Recipe.objects.filter(pk=pk)
+    context={
+        "object_list": queryset
+    }
+    return render(request, 'recipes/preparation.html', context)
     
 #add recipe view
-def recipe_add_view(request):
+def recipe_add(request):
     form = RecipeForm(request.POST or None)
     if form.is_valid():
         form.save()
@@ -134,49 +142,26 @@ def recipes(request):
     
 #update recipe view
 def recipe_update(request, pk):
-    '''initial_data={
-         'name':'{{ instance}}' 
-        method 
-        serves 
-        scalable 
-        prep_time 
-        cook_time 
-        description 
-        ingredients 
-        instructions
-        suits 
-        publisher 
-        allergy 
-        difficulty 
-        recipe_type 
-        cuisine 
-        published_date 
-        uploaded_date 
-        update 
-        image 
-        notes 
-        author
-        
-    }'''
-  
     #retrieve RecipeForm() data
-    obj = Recipe.objects.get(request, pk=pk)
+    obj = Recipe.objects.get(pk=pk)
     form = RecipeForm(request.POST or None, instance=obj)
+    if form.is_valid():
+        form.save()
+        return redirect('/')
     context ={
         'form': form,
     }
-    return render(request, 'recipes/recipe_add.html', context) 
-
+    return render(request, 'recipes/recipe/update.html', context) 
      
 #recipe_delete view###################################################
 def recipe_delete(request, pk):
     obj= get_object_or_404(Recipe, pk=pk)
-    form = RecipeForm(request.POST or None, initial=obj)
+    #form = RecipeForm(request.POST or None, initial=obj)
     #confirming delte
     if request.method == 'POST':
         obj.delete()
-        return redirect('../../')
+        return redirect('/')
     context ={
-        'form': form,
+        'object': obj,
     }
-    return render(request, 'recipes/recipe/recipe_delete.html', context)
+    return render(request, 'recipes/recipe_delete.html', context)

@@ -23,7 +23,6 @@ body {
 a:link,
 a:visited,
 a:active {
-    color: #ffffff;
     text-decoration: none;
 }
 
@@ -42,12 +41,22 @@ h6 {
     text-shadow: 1px 1px #1f1f1f;
 }
 
+.header-inst {
+    text-shadow: 1px 1px #1f1f1f;
+    text-align: center;
+    font: 30px bold;
+}
+
 .recipe-detail {
     padding: 0 10px;
     color: #000000;
     border-radius: 5px;
     background-color: #ffffff;
     opacity: .8;
+}
+
+.dbuttons {
+    margin: 2px;
 }
 
 .logo {
@@ -71,8 +80,9 @@ h6 {
 
 /* breakfast home tabe styling*/
 
-.breakfast {
-    background: white url('/static/images/breakfast.jpg')no-repeat center center;
+.breakfast,
+.lunch,
+.dinner {
     -webkit-background-size: contain;
     -moz-background-size: contain;
     -o-background-size: contain;
@@ -81,28 +91,20 @@ h6 {
     text-shadow: 1px 1px #000000;
 }
 
+.breakfast {
+    background: white url('/static/images/breakfast.jpg')no-repeat center center;
+}
+
 /* lunch home tabe styling*/
 
 .lunch {
     background: white url('/static/images/lunch.jpg')no-repeat center center;
-    -webkit-background-size: contain;
-    -moz-background-size: contain;
-    -o-background-size: contain;
-    background-size: contain;
-    color: #FFCB00;
-    text-shadow: 1px 1px #000000;
 }
 
 /* dinner home tabe styling*/
 
 .dinner {
     background: white url('/static/images/dinner.jpg')no-repeat center center;
-    -webkit-background-size: contain;
-    -moz-background-size: contain;
-    -o-background-size: contain;
-    background-size: contain;
-    color: #009941;
-    text-shadow: 1px 1px #000000;
 }
 
 .food {
@@ -129,6 +131,13 @@ h6 {
     text-shadow: 1px 1px #000000;
 }
 
+
+/*table image styling*/
+
+tr td img {
+    height: 100%;
+    width: 100%;
+}
 
 /* ############# table styling ################*/
 
@@ -204,6 +213,28 @@ form {
     border-radius: 5px;
 }
 
+.addform {
+    text-shadow: 1px 1px #009941;
+    background-color: #f1f1f1;
+    opacity: 0.9;
+    border-radius: 5px;
+}
+
+.delform {
+    color: #000000;
+    text-shadow: 1px 1px #C93241;
+    background-color: #f1f1f1;
+    opacity: .8;
+    border-radius: 5px;
+    font-size:40px;
+    margin: 5px auto;
+}
+
+.delact{
+    margin: 5px auto;
+}
+
+
 .frow {
     max-width: 99%;
 }
@@ -227,4 +258,5 @@ form {
     opacity: .5;
     border-top: 3px solid #000000;
     margin-bottom: 0;
+    text-align: center;
 }

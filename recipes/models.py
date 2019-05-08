@@ -142,5 +142,5 @@ class Recipe(models.Model):
    
     # absolute url method
     def get_absolute_url(self):
-        return reverse('recipe_details', kwargs={'pk': self.pk})
+        return reverse('detail', kwargs={'pk': self.pk})
   
