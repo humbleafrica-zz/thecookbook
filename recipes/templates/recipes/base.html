@@ -31,12 +31,18 @@
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
+                {% if user.is_authenticated %}
                 <li class="nav-item">
-                    <a class="nav-link" href="login"><i class="fas fa-sign-in-alt"></i> Sign In </a>
+                    <a class="nav-link" href="{% url 'logout' %}"><i class="fas fa-sign-in-alt"></i> Sign Out </a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'login' %}"><i class="fas fa-sign-in-alt"></i> Sign In </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="signup"><i class="fas fa-user-plus"></i> Register </a>
+                    <a class="nav-link" href="{% url 'logout' %}"><i class="fas fa-user-plus"></i> Register </a>
                 </li>
+                {% endif %}
             </ul>
     </nav>
 </head>
@@ -64,7 +70,7 @@
 </div>
 {% endblock %} {%block footer%}
 <footer class="footer">
-    hi my name is chicki chicki
+    Crafted Passionately by <i> <a href="">Humbleafrica</a> {% now 'Y' %}</i>
 </footer>
 {% endblock %}
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

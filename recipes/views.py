@@ -165,3 +165,15 @@ def recipe_delete(request, pk):
         'object': obj,
     }
     return render(request, 'recipes/recipe_delete.html', context)
+    
+def favorite(request, pk):
+    if request.method == 'POST':
+        favorite = Recipe.objects.get(pk=pk)
+        user = request.user
+        user.favorites.add(favorite)
+        #messages.add_message(request, messages.INFO, 'Recipe Favorited.')
+        return redirect('index')
+        
+#def logout_user():
+    #if user.is_staff:
+    #return redirect('logout_user')

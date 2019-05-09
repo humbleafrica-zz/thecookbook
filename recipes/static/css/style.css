@@ -38,14 +38,15 @@ h6 {
 }
 
 .header-index {
-    margin:20px auto;
+    margin: 20px auto;
     text-shadow: 1px 1px #1f1f1f;
 }
 
 .header-inst {
     text-shadow: 1px 1px #1f1f1f;
     text-align: center;
-    font: 30px bold;
+    font-size: 30px;
+    font-weight:bold;
 }
 
 .recipe-detail {
@@ -132,10 +133,11 @@ h6 {
     text-shadow: 1px 1px #000000;
 }
 
-.caed{
- margin:2px auto;
- text-align: center;
+.caed {
+    margin: 2px auto;
+    text-align: center;
 }
+
 /*table image styling*/
 
 tr td img {
@@ -206,6 +208,21 @@ tr td img {
     #no-more-tables td:before {
         content: attr(data-title);
     }
+}
+
+
+/*#####login form styling##############*/
+
+.loginform {
+    margin: 250px auto 10px auto;
+padding:0 !important;
+    text-align:center;
+}
+
+ #id_username, #id_password{
+     margin:2px;
+     border:1px solid #000000;
+    border-radius:5px;
 }
 
 /*################add recipe view styling######################*/

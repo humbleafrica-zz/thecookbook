@@ -1,0 +1,39 @@
+{% extends 'recipes/base.html' %} {% block content %} {% block title %}Login - The Recipe Diary {% endblock %} {% if form.errors %}
+
+<body>
+
+    <p>Your username and password didn't match. Please divy again.</p>
+    {% endif %} {% if next %} {% if user.is_authenticated %}
+    <p>Your account doesn't have access to this page. To proceed, please login with an account that has access.</p>
+    {% else %}
+    <p>Please login to see this page.</p>
+    {% endif %} {% endif %}
+
+    <form class="loginform" method="post" action="{% url 'login' %}">
+        <div class="container wrapper">
+            <div class="col">
+                <div class="row">
+                    <div class="col">{{ form.username.label_tag }}</div>
+                    <div class="col">{{ form.username }}</div>
+                </div>
+                <div class="row">
+                    <div class="col">{{ form.password.label_tag }}</div>
+                    <div class="col">{{ form.password }}</div>
+                </div>
+            </div>
+            <div class="col">
+                <input class="row btn btn-success" type="submit" value="login" />
+                <input type="hidden" name="next" value="{{ next }}" />
+                <p ><a href="{% url 'password_reset' %}">Lost password?</a></p>
+            </div>
+        </div>
+        {% csrf_token %}
+        
+    </form>
+
+    {# Assumes you setup the password_reset view in your URLconf #}
+
+    <h1 class="header-index">Login For A Real Taste</h1>
+    <h1 class="header-index"> Today, Tomorrow and Forever</h1>
+</body>
+{% endblock %}

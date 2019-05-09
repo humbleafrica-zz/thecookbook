@@ -1,0 +1,22 @@
+ {% extends 'recipes/base.html' %} {% block content %} {% block title %}Logged Out - The Recipe Diary {% endblock %}
+
+<body>
+    <div class="row">
+        <div class="container wrapper">
+            <h1 class="header-index">
+                <p>Logged out!</p>
+            </h1>
+            <h2>We Would Like To See You Again Soon </h2>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <a href="{% url 'login' %}">
+                <h1 class="header-index">Click here to login again</h1>
+            </a>
+        </div>
+
+    </div>
+</body>
+{% endblock %}
+ 

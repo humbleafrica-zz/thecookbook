@@ -15,4 +15,6 @@ urlpatterns = [
     url(r'^recipes/recipe/preparation/(?P<pk>[0-9]+)/$', views.preparation, name='preparation'),
     url(r'^recipes/recipe/recipe_update/(?P<pk>[0-9]+)/$', views.recipe_update, name='recipe_update'),
     url(r'^recipes/recipe_delete/(?P<pk>[0-9]+)/$', views.recipe_delete, name='recipe_delete'),
+    #url(r'^templates/registration/logout.html/$', views.logout_user, name='logout_user'),
 ]
+
