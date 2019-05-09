@@ -132,7 +132,10 @@ h6 {
     text-shadow: 1px 1px #000000;
 }
 
-
+.caed{
+ margin:2px auto;
+ text-align: center;
+}
 /*table image styling*/
 
 tr td img {

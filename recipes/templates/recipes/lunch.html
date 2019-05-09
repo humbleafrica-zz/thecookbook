@@ -19,17 +19,25 @@
                 <tbody>
                     {% for instance in object_list %}
                     <tr>
-                        <td data-title="Number"><a href="/recipes/recipe/detail/{{ instance.pk }}/">{{ instance.pk }} </a></td>
-                        <td data-title="Name"><a href="/recipes/recipe/detail/{{ instance.pk}}/">{{ instance.name }} </a></td>
-                        <td data-title="Appearance"><a href="/recipes/recipe/detail/{{ instance.pk }}/">
-                            <img src="{{instance.image.url}}" alt='{{instance.name}}'></img></a>
+                        <td data-title="Number">{{ instance.pk }}</td>
+                        <td data-title="Name">
+                            <a href="/recipes/recipe/detail/{{ instance.pk}}/">{{ instance.name }}</a>
                         </td>
-                        <td data-title="Suits"><a href="/recipes/recipe/detail/{{ instance.pk }}/">{{ instance.recipe_type }}</a></td>
-                        <td data-title="Difficulty"><a href="/recipes/recipe/detail/{{ instance.pk }}/">{{ instance.difficulty }}</a></td>
-                        <td data-title="Suits"><a href="/recipes/recipe/detail/{{ instance.pk }}/">{{ instance.suits }}</a></td>
-                        <td data-title="Cuisine"><a href="/recipes/recipe/detail/{{ instance.pk }}/">{{ instance.cuisine }}</a></td>
+                        <td data-title="Appearance"><a href="/recipes/recipe/detail/{{ instance.pk }}/">
+                            <img src="{{ instance.image.url}}"></img></a>
+                        </td>
+                        <td data-title="Suits">{{ instance.recipe_type }}</td>
+                        <td data-title="Difficulty">{{ instance.difficulty }}</td>
+                        <td data-title="Suits">{{ instance.suits }}</td>
+                        <td data-title="Cuisine">{{ instance.cuisine }}</td>
                     </tr>
                     {% endfor %}
+                    <tr>
+                        <a href="/recipes/recipe/preparation/{{ instance.pk }}/"><button type="button" class="dbuttons btn btn-dark">Cook</button></a>
+                        <a href="/recipes/recipe/recipe_update/{{ instance.pk }}/"><button type="button" class="dbuttons btn btn-warning">Edit</button></a>
+                        <a href="/recipes/recipe_add/"><button type="button" class="dbuttons btn btn-success">Add</button></a>
+                        <a href="/recipes/recipe_delete/{{ instance.pk }}/"><button type="button" class="dbuttons btn btn-danger">Delete</button></a>
+                    </tr>
                 </tbody>
             </table>
         </div>
