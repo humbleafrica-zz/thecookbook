@@ -2,7 +2,7 @@
 
 <body>
     <div class="container wrapper">
-        <h1 class="header-index">Because the way to one's heart</h1>
+        <h1 class="header-index">Your Last Meal Of The Day,</h1>
         <div id="no-more-tables" class="col row">
             <table class="table recipe-detail table-dark  table-condensed">
                 <thead>
@@ -22,7 +22,7 @@
                         <td data-title="Number"><a href="/recipes/recipe/detail/{{ instance.pk }}/">{{ instance.pk }} </a></td>
                         <td data-title="Name"><a href="/recipes/recipe/detail/{{ instance.pk}}/">{{ instance.name }} </a></td>
                         <td data-title="Appearance"><a href="/recipes/recipe/detail/{{ instance.pk }}/">
-                            <img src="/event_54OPtZf.PNG">{{ instance.image }}</img></a>
+                            <img src="{{instance.image.url}}" alt='{{instance.name}}'></img></a>
                         </td>
                         <td data-title="Suits"><a href="/recipes/recipe/detail/{{ instance.pk }}/">{{ instance.recipe_type }}</a></td>
                         <td data-title="Difficulty"><a href="/recipes/recipe/detail/{{ instance.pk }}/">{{ instance.difficulty }}</a></td>
@@ -33,7 +33,7 @@
                 </tbody>
             </table>
         </div>
-        <h1 class="header-index">is via food</h1>
+        <h1 class="header-index">As Expected</h1>
     </div>
 
 </body>

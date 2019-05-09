@@ -6,7 +6,7 @@
 
 
 body {
-    background: white url('/static/images/background.jpg')no-repeat center center;
+    background: white url('/static/media/images/background.jpg')no-repeat center center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -38,6 +38,7 @@ h6 {
 }
 
 .header-index {
+    margin:20px auto;
     text-shadow: 1px 1px #1f1f1f;
 }
 
@@ -92,19 +93,19 @@ h6 {
 }
 
 .breakfast {
-    background: white url('/static/images/breakfast.jpg')no-repeat center center;
+    background: white url('/static/media/images/breakfast.jpg')no-repeat center center;
 }
 
 /* lunch home tabe styling*/
 
 .lunch {
-    background: white url('/static/images/lunch.jpg')no-repeat center center;
+    background: white url('/static/media/images/lunch.jpg')no-repeat center center;
 }
 
 /* dinner home tabe styling*/
 
 .dinner {
-    background: white url('/static/images/dinner.jpg')no-repeat center center;
+    background: white url('/static/media/images/dinner.jpg')no-repeat center center;
 }
 
 .food {
@@ -137,6 +138,7 @@ h6 {
 tr td img {
     height: 100%;
     width: 100%;
+    border-radius: 5px;
 }
 
 /* ############# table styling ################*/
@@ -206,7 +208,6 @@ tr td img {
 /*################add recipe view styling######################*/
 
 form {
-    color: #ffffff;
     text-shadow: 1px 1px #000000;
     background-color: #f1f1f1;
     opacity: 0.9;
@@ -214,6 +215,7 @@ form {
 }
 
 .addform {
+    color: #000000;
     text-shadow: 1px 1px #009941;
     background-color: #f1f1f1;
     opacity: 0.9;
@@ -226,11 +228,11 @@ form {
     background-color: #f1f1f1;
     opacity: .8;
     border-radius: 5px;
-    font-size:40px;
+    font-size: 40px;
     margin: 5px auto;
 }
 
-.delact{
+.delact {
     margin: 5px auto;
 }
 

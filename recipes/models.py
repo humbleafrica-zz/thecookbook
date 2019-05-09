@@ -74,6 +74,7 @@ class Recipe(models.Model):
         )
     
     #allergy warnings
+    NONE = 'NONE'
     MILK = 'MILK'
     EGG = 'EGG'
     NUT = 'NUT'
@@ -82,6 +83,7 @@ class Recipe(models.Model):
     FISH = 'FISH'
     PORK = 'PORK'
     ALERGY_CHOICE =(
+        (NONE, 'NONE'),
         (MILK, 'MILK'),
         (EGG, 'EGG'),
         (NUT, 'NUT'),
@@ -129,7 +131,7 @@ class Recipe(models.Model):
     published_date  = models.DateField((u"Date Published"), blank=True)
     uploaded_date = models.DateField((u"Date Uploaded"), auto_now_add=True, editable = False)
     update = models.DateField((u"Last Updated"), auto_now_add=True, editable = False)
-    image = models.ImageField(blank=True)
+    image = models.ImageField(upload_to='images/',blank=True)
     notes = models.TextField(max_length=1500, blank=True)
     country = models.CharField(max_length=50)
     author = models.CharField(max_length=50)
