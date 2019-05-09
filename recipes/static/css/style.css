@@ -95,6 +95,7 @@ h6 {
 
 .breakfast {
     background: white url('/static/media/images/breakfast.jpg')no-repeat center center;
+    background-size:cover;
 }
 
 /* lunch home tabe styling*/

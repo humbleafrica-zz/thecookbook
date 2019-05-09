@@ -129,14 +129,14 @@ class Recipe(models.Model):
     recipe_type = models.CharField('recipe Type', max_length = 20, choices = RECIPE_TYPE_CHOICES)
     cuisine = models.CharField('cuisine', max_length = 20, choices = CUISINE_CHOICE)
     published_date  = models.DateField((u"Date Published"), blank=True)
-    uploaded_date = models.DateField((u"Date Uploaded"), auto_now_add=True, editable = False)
-    update = models.DateField((u"Last Updated"), auto_now_add=True, editable = False)
+    uploaded_date = models.DateField((u"Date Uploaded"), auto_now=False, auto_now_add=True, editable = False)
+    update = models.DateField((u"Last Updated"), auto_now=True,auto_now_add=False, editable = False)
     image = models.ImageField(upload_to='images/',blank=True)
     notes = models.TextField(max_length=1500, blank=True)
     country = models.CharField(max_length=50)
     author = models.CharField(max_length=50)
 
-    
+    objects = RecipeManager()
     # meta class
     class Meta:
         verbose_name = 'recipe'

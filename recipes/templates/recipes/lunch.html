@@ -17,7 +17,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for instance in object_list %}
+                    <a href="/recipes/recipe_add/"><button type="button" class="dbuttons btn btn-success">Add</button></a> {% for instance in object_list %}
                     <tr>
                         <td data-title="Number">{{ instance.pk }}</td>
                         <td data-title="Name">
@@ -33,7 +33,6 @@
                         <td>
                             <a href="/recipes/recipe/preparation/{{ instance.pk }}/"><button type="button" class="dbuttons btn btn-dark">Cook</button></a>
                             <a href="/recipes/recipe/recipe_update/{{ instance.pk }}/"><button type="button" class="dbuttons btn btn-warning">Edit</button></a>
-                            <a href="/recipes/recipe_add/"><button type="button" class="dbuttons btn btn-success">Add</button></a>
                             <a href="/recipes/recipe_delete/{{ instance.pk }}/"><button type="button" class="dbuttons btn btn-danger">Delete</button></a>
                         </td>
                     </tr>

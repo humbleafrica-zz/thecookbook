@@ -35,20 +35,24 @@
                     </tr>
                     <tr>
                         <td class="header-inst" colspan="8" data-title="Cooking Method">Cooking Method</td>
+
+                    </tr>
+                    <tr>
+                        <td class="header-inst"  colspan="9">
+                            <a href="/recipes/recipe/recipe_update/{{ instance.pk }}/"><button type="button" class="dbuttons btn btn-warning">Edit</button></a>
+                            <a href="/recipes/recipe_add/"><button type="button" class="dbuttons btn btn-success">Add</button></a>
+                            <a href="/recipes/recipe_delete/{{ instance.pk }}/"><button type="button" class="dbuttons btn btn-danger">Delete</button></a>
+                        </td>
                     </tr>
                     <tr>
                         <td colspan="2" data-title="Image"><a href="">
                             <img height="auto" src="{{ instance.image.url }}">
                             </img></a></td>
                         <td colspan="6" data-title="Preparation">{{ instance.instructions }}</td>
+
                     </tr>
                     {% endfor %}
-                    <tr>
-                        <a href="/{{ preparation }}/{{ instance.pk }}/"><button type="button" class="dbuttons btn btn-dark">Cook</button></a>
-                        <a href="/recipes/recipe/recipe_update/{{ instance.pk }}/"><button type="button" class="dbuttons btn btn-warning">Edit</button></a>
-                        <a href="/recipes/recipe_add/"><button type="button" class="dbuttons btn btn-success">Add</button></a>
-                        <a href="/recipes/recipe_delete/{{ instance.pk }}/"><button type="button" class="dbuttons btn btn-danger">Delete</button></a>
-                    </tr>
+
                 </tbody>
             </table>
 

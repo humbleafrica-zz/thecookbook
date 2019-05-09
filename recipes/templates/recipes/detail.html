@@ -4,6 +4,9 @@
     <div class="container wrapper">
         <h2 class="header-index">{{ instance.name }} Details</h2>
         <div id="no-more-tables" class="col row">
+            {% if error_message %}
+            <div class="col"> {{ error_message}}</div>
+            {% endif %}
             <table class="table recipe-detail table-dark  table-condensed">
                 <thead>
                     <tr>
@@ -48,7 +51,6 @@
                     {% endfor %}
                 </tbody>
             </table>
-
         </div>
         <h1 class="header-index">Let's Get You Satisfied</h1>
     </div>
