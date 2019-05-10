@@ -1,19 +1,25 @@
 from django.shortcuts import render, render_to_response,  get_object_or_404, redirect
 from django.utils import timezone #importing the timezone model
+from datetime import datetime, timedelta # import to filter new recipes
 from .models import Recipe #importing the recipe model
 from django.core.urlresolvers import reverse_lazy
-from forms import RecipeForm, RawRecipeForm
+from forms import RecipeForm #RawRecipeForm
+from django.contrib.auth.forms import UserCreationForm #import to use the builtin user creation form
 
 
 #index view###################################################
 def index(request):
-    return render(request, 'recipes/index.html')
+    context={
+        'index': 'active'
+    }
+    return render(request, 'recipes/index.html', context)
 
 #breakfast view###################################################
 def breakfast(request):
     queryset = Recipe.objects.filter(recipe_type='BREAKFAST')
     context={
-        "object_list": queryset
+        "object_list": queryset,
+        'breakfast': 'active'
     }
     return render(request, 'recipes/breakfast.html', context)
 
@@ -21,7 +27,8 @@ def breakfast(request):
 def lunch(request):
     queryset = Recipe.objects.filter(recipe_type='LUNCH')
     context={
-        "object_list": queryset
+        "object_list": queryset,
+        'lunch': 'active'
     }
     return render(request, 'recipes/lunch.html', context)
 
@@ -29,7 +36,8 @@ def lunch(request):
 def dinner(request):
     queryset = Recipe.objects.filter(recipe_type='DINNER')
     context={
-        "object_list": queryset
+        "object_list": queryset,
+        'dinner': 'active'
     }
     return render(request, 'recipes/dinner.html', context)
 
@@ -37,7 +45,8 @@ def dinner(request):
 def dessert(request):
     queryset = Recipe.objects.filter(recipe_type='DESSERT')
     context={
-        "object_list": queryset
+        "object_list": queryset,
+        'dessert': 'active'
     }
     return render(request, 'recipes/dessert.html', context)
 
@@ -45,7 +54,8 @@ def dessert(request):
 def starter(request):
     queryset = Recipe.objects.filter(recipe_type='STARTER')
     context={
-        "object_list": queryset
+        "object_list": queryset,
+        'starter': 'active'
     }
     return render(request, 'recipes/starter.html', context)
 
@@ -53,7 +63,8 @@ def starter(request):
 def brunch(request):
     queryset = Recipe.objects.filter(recipe_type='BRUNCH')
     context={
-        "object_list": queryset
+        "object_list": queryset,
+        'brunch': 'active'
     }
     return render(request, 'recipes/brunch.html', context)
     
@@ -166,14 +177,26 @@ def recipe_delete(request, pk):
     }
     return render(request, 'recipes/recipe_delete.html', context)
     
-def favorite(request, pk):
+def register(request):
     if request.method == 'POST':
-        favorite = Recipe.objects.get(pk=pk)
-        user = request.user
-        user.favorites.add(favorite)
-        #messages.add_message(request, messages.INFO, 'Recipe Favorited.')
-        return redirect('index')
-        
-#def logout_user():
-    #if user.is_staff:
-    #return redirect('logout_user')
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+        return redirect('/')
+    else:
+        form = UserCreationForm()
+    
+    context ={
+        'form': form,
+        'signup': 'signup',
+    }
+    
+    return render(request, 'registration/reg_form.html', context)
+
+def NewRecipe(request):
+    #queryset = Recipe.objects.all(uploaded_date = 'date.today() - monthdelta(1)')
+    queryset = Recipe.objects.filter(created_at__month=current_month)
+    context ={
+        'newrecipes': queryset,
+    }
+    return render(request, 'recipes/base.html', context)

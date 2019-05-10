@@ -46,7 +46,7 @@ h6 {
     text-shadow: 1px 1px #1f1f1f;
     text-align: center;
     font-size: 30px;
-    font-weight:bold;
+    font-weight: bold;
 }
 
 .recipe-detail {
@@ -95,7 +95,7 @@ h6 {
 
 .breakfast {
     background: white url('/static/media/images/breakfast.jpg')no-repeat center center;
-    background-size:cover;
+    background-size: cover;
 }
 
 /* lunch home tabe styling*/
@@ -216,14 +216,24 @@ tr td img {
 
 .loginform {
     margin: 250px auto 10px auto;
-padding:0 !important;
-    text-align:center;
+    padding: 0 !important;
+    text-align: center;
 }
 
- #id_username, #id_password{
-     margin:2px;
-     border:1px solid #000000;
-    border-radius:5px;
+.signupForm {
+    margin: 50px auto 10px auto;
+    padding: 0 !important;
+    text-align: left;
+}
+
+
+#id_username,
+#id_password,
+#id_password1,
+#id_password2 {
+    margin: 2px;
+    border: 1px solid #000000;
+    border-radius: 5px;
 }
 
 /*################add recipe view styling######################*/

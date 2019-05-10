@@ -5,7 +5,7 @@
         <h1 class="header-index">Because the way to one's heart</h1>
         <h1 class="header-index">is via food</h1>
         <div id="no-more-tables" class="col row">
-            <table class="table table-dark  table-bordered table-striped table-condensed">
+            <table class="table table-dark  recipe-detail table-condensed">
                 <thead>
                     <tr>
                         <th scope="col">Meal No.</th>
@@ -17,18 +17,17 @@
                         <th scope="col">Cuisine</th>
                     </tr>
                 </thead>
-                <tbody>
-                    {{ object_list }} {% for instance in object_list %}
+                <tbody> {% for instance in object_list %}
                     <tr>
-                        <td data-title="Number"><a href="/recipes/recipe/detail/{{ instance.pk }}/">{{ instance.pk }} </a></td>
-                        <td data-title="Name"><a href="/recipes/recipe/detail/{{ instance.pk}}/">{{ instance.name }} </a></td>
-                        <td data-title="Appearance"><a href="/recipes/recipe/detail/{{ instance.pk }}/">
-                            <img src="/event_54OPtZf.PNG">{{ instance.image }}</img></a>
+                        <td data-title="Number">{{ instance.pk }}</td>
+                        <td data-title="Name">{{ instance.name }}</td>
+                        <td data-title="Appearance">
+                            <img src="{{ instance.image.url }}"></img>
                         </td>
-                        <td data-title="Suits"><a href="/recipes/recipe/detail/{{ instance.pk }}/">{{ instance.recipe_type }}</a></td>
-                        <td data-title="Difficulty"><a href="/recipes/recipe/detail/{{ instance.pk }}/">{{ instance.difficulty }}</a></td>
-                        <td data-title="Suits"><a href="/recipes/recipe/detail/{{ instance.pk }}/">{{ instance.suits }}</a></td>
-                        <td data-title="Cuisine"><a href="/recipes/recipe/detail/{{ instance.pk }}/">{{ instance.cuisine }}</a></td>
+                        <td data-title="Suits">{{ instance.recipe_type }}</td>
+                        <td data-title="Difficulty">{{ instance.difficulty }}</td>
+                        <td data-title="Suits">{{ instance.suits }}</td>
+                        <td data-title="Cuisine">{{ instance.cuisine }}</td>
                     </tr>
                     {% endfor %}
                 </tbody>

@@ -11,7 +11,7 @@ from django.core.urlresolvers import reverse
 #from django.urls import reverse
 # Create your models here.
 
-
+        
 #recipe model
 class Recipe(models.Model):
      #meal choices
@@ -113,6 +113,7 @@ class Recipe(models.Model):
         )
     
      # DATABASE FIELDS
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, editable = False)
     name = models.CharField(max_length=200)
     method = models.CharField(max_length=50)
     serves = models.IntegerField()
@@ -128,15 +129,15 @@ class Recipe(models.Model):
     difficulty = models.CharField('difficulty', max_length = 10, choices = DIFF_TYPE_CHOICES)
     recipe_type = models.CharField('recipe Type', max_length = 20, choices = RECIPE_TYPE_CHOICES)
     cuisine = models.CharField('cuisine', max_length = 20, choices = CUISINE_CHOICE)
-    published_date  = models.DateField((u"Date Published"), blank=True)
     uploaded_date = models.DateField((u"Date Uploaded"), auto_now=False, auto_now_add=True, editable = False)
     update = models.DateField((u"Last Updated"), auto_now=True,auto_now_add=False, editable = False)
     image = models.ImageField(upload_to='images/',blank=True)
     notes = models.TextField(max_length=1500, blank=True)
     country = models.CharField(max_length=50)
     author = models.CharField(max_length=50)
+    likes = models.ManyToManyField(settings.AUTH_USER_MODEL, blank=True, editable = False, related_name='post_likes')
 
-    objects = RecipeManager()
+    
     # meta class
     class Meta:
         verbose_name = 'recipe'
@@ -144,13 +145,23 @@ class Recipe(models.Model):
     
     # to string method
     def __str__(self):
-         return self.name
          self.save()
-   
+         return self.name
+         
     # absolute url method
     def get_absolute_url(self):
         return reverse('detail', kwargs={'pk': self.pk})
         
+        
 '''class Country(models.Model):
     recipe = models.ForeignKey(Recipe,on_delete=models.CASCADE)
     country = CountryField()'''
+    
+class Profile(models.Model):
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete = models.CASCADE)
+    
+    def __str__(self):
+        return "User Profile {}".format(self.user.username)
+        
+    
+    
