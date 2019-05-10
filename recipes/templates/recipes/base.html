@@ -1,4 +1,5 @@
 <!DOCTYPE html> {% load static %}
+
 <html lang="en">
 
 <head>
@@ -32,8 +33,12 @@
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
+                <form class="searchbar">
+                    <input class="search_input" type="text" name="q" placeholder="Search">
+                    <a href="#" class="search_icon"> <button class="sicon" type='submit'><i class="fas fa-search"> </i></button> </a>
+                </form>
                 {% if user.is_authenticated %}
-                <li class="nav-item nav-link"> <i class="far fa-user"> </i>  {{ user }}</li>
+                <li class="nav-item nav-link"> <i class="far fa-user"> </i> {{ user }}</li>
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'logout' %}"><i class="fas fa-sign-in-alt"></i> Sign Out </a>
                 </li>
@@ -55,11 +60,7 @@
 </div> {% endblock %} {% block content %} {% endblock %} {%block favourites%}
 <div class="container-fluid row">
     <div class="col-sm favourites">
-        {% for instance in newrecipes %}
-        
-        print instance
-        
-        {% endfor%}
+        {% for instance in newrecipes %} print instance {% endfor%}
     </div>
     <div class="col-sm favourites">
         Chef's Favourite

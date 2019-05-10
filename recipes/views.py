@@ -3,6 +3,7 @@ from django.utils import timezone #importing the timezone model
 from datetime import datetime, timedelta # import to filter new recipes
 from .models import Recipe #importing the recipe model
 from django.core.urlresolvers import reverse_lazy
+from django.db.models import Q 
 from forms import RecipeForm #RawRecipeForm
 from django.contrib.auth.forms import UserCreationForm #import to use the builtin user creation form
 
@@ -146,8 +147,16 @@ def recipe_add(request):
 #return all recipes
 def recipes(request):
     queryset = Recipe.objects.all()
+    query =request.GET.get('q')
+    if query:
+        recipe = Recipe.objects.filter(
+            Q(name__contains=query)|
+            Q(author__contains=query)|
+            Q(country__contains=query)
+            )
     context={
-        "object_list": queryset
+        "object_list": queryset,
+        'search_list': query
     }
     return render(request, 'recipes/all.html', context)
     

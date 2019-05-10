@@ -135,7 +135,7 @@ class Recipe(models.Model):
     notes = models.TextField(max_length=1500, blank=True)
     country = models.CharField(max_length=50)
     author = models.CharField(max_length=50)
-    likes = models.ManyToManyField(settings.AUTH_USER_MODEL, blank=True, editable = False, related_name='post_likes')
+    likes = models.ManyToManyField(settings.AUTH_USER_MODEL, blank=True, related_name='post_likes')
 
     
     # meta class

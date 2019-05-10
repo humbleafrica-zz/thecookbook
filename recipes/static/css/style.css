@@ -236,6 +236,27 @@ tr td img {
     border-radius: 5px;
 }
 
+.btn{
+    margin:10px;
+}
+
+/*#######search bar styling */
+
+input,
+text {
+    margin: 2px;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    padding:5px;
+}
+
+ .sicon{
+    background-color:#343A40;
+    padding:3px 10px;
+    margin:5px;
+    border-radius:5px;
+}
+
 /*################add recipe view styling######################*/
 
 form {
