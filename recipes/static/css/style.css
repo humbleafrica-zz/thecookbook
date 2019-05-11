@@ -63,11 +63,9 @@ h6 {
 
 .logo {
     position: absolute;
-    top: 160px;
-    margin-left: auto;
-    margin-right: auto;
+    top: 80px;
+    margin: 40px auto;
     left: 47%;
-
 }
 
 .meal {
@@ -147,16 +145,32 @@ tr td img {
     border-radius: 5px;
 }
 
-/* ############# table styling ################*/
+/* ############# styling mobile ################*/
 
 @media only screen and (max-width: 800px) {
 
+    .recipe-detail {
+        padding: 0 10px;
+        color: #000000;
+        border-radius: 5px;
+        background-color: #ffffff;
+        opacity: .8;
+        margin: .5em 0em 0em 0em !important;
+    }
+
+    .favourites {
+        color: #f1f1f1;
+        font-weight: bold;
+        text-shadow: 1px 1px #000000;
+        margin: .5em 0em 0em 6em;
+    }
+    
     .logo {
         position: absolute;
-        top: 160px;
+        top: 90px;
         margin-left: auto;
         margin-right: auto;
-        left: 40%;
+        left: 38%;
 
     }
     /* Force table to not be like tables anymore */
@@ -236,8 +250,8 @@ tr td img {
     border-radius: 5px;
 }
 
-.btn{
-    margin:10px;
+.btn {
+    margin: 10px;
 }
 
 /*#######search bar styling */
@@ -247,14 +261,14 @@ text {
     margin: 2px;
     border: 1px solid #000000;
     border-radius: 5px;
-    padding:5px;
+    padding: 5px;
 }
 
- .sicon{
-    background-color:#343A40;
-    padding:3px 10px;
-    margin:5px;
-    border-radius:5px;
+.sicon {
+    background-color: #343A40;
+    padding: 3px 10px;
+    margin: 5px;
+    border-radius: 5px;
 }
 
 /*################add recipe view styling######################*/

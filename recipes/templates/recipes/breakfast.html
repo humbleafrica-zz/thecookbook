@@ -4,7 +4,7 @@
     <div class="container wrapper">
         <h1 class="header-index">Start The Day like the Royals,</h1>
         <div id="no-more-tables" class="col row">
-            <table class="table table-dark  recipe-detail table-condensed">
+            <table id="dataTable" class="table table-dark  recipe-detail table-condensed">
                 <thead>
                     <tr>
                         <th scope="col">Meal No.</th>
@@ -21,7 +21,7 @@
                     <tr>
                         <td data-title="Number">{{ instance.pk }}</td>
                         <td data-title="Name">
-                            <a href="/recipes/recipe/detail/{{ instance.pk}}/">{{ instance.name }}</a>
+                            <a href="/recipes/recipe/detail/{{ instance.pk}}/">{{ instance.recipe_name }}</a>
                         </td>
                         <td data-title="Appearance"><a href="/recipes/recipe/detail/{{ instance.pk }}/">
                             <img src="{{ instance.image.url}}"></img></a>
@@ -29,10 +29,11 @@
                         <td data-title="Suits">{{ instance.recipe_type }}</td>
                         <td data-title="Difficulty">{{ instance.difficulty }}</td>
                         <td data-title="Suits">{{ instance.suits }}</td>
-                        <td data-title="Cuisine">{{ instance.cuisine }}</td <td>
-                        <a href="{% url 'preparation' %}/{{ instance.pk }}/"><button type="button" class="dbuttons btn btn-dark">Cook</button></a>
-                        <a href="{% url 'recipe_update' %}/{{ instance.pk }}/"><button type="button" class="dbuttons btn btn-warning">Edit</button></a>
-                        <a href="{% url 'recipe_delete' %}/{{ instance.pk }}/"><button type="button" class="dbuttons btn btn-danger">Delete</button></a>
+                        <td data-title="Cuisine">{{ instance.cuisine }}</td>
+                        <td>
+                            <a href="/recipes/recipe/preparation/{{ instance.pk }}/"><button type="button" class="dbuttons btn btn-dark">Cook</button></a>
+                            <a href="/recipes/recipe/recipe_update/{{ instance.pk }}/"><button type="button" class="dbuttons btn btn-warning">Edit</button></a>
+                            <a href="/recipes/recipe_delete/{{ instance.pk }}/"><button type="button" class="dbuttons btn btn-danger">Delete</button></a>
                         </td>
                     </tr>
                     {% endfor %}

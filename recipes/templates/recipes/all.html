@@ -5,11 +5,11 @@
         <h1 class="header-index">Because the way to one's heart</h1>
         <h1 class="header-index">is via food</h1>
         <div id="no-more-tables" class="col row">
-            <table class="table table-dark  recipe-detail table-condensed">
+            <table id="dataTable"  class="table table-dark  recipe-detail table-condensed">
                 <thead>
                     <tr>
                         <th scope="col">Meal No.</th>
-                        <th scope="col">Meal Name</th>
+                        <th scope="col">Meal recipe_name</th>
                         <th scope="col">Appearance</th>
                         <th scope="col">Type</th>
                         <th scope="col">Difficulty</th>
@@ -20,7 +20,7 @@
                 <tbody> {% for instance in object_list %}
                     <tr>
                         <td data-title="Number">{{ instance.pk }}</td>
-                        <td data-title="Name">{{ instance.name }}</td>
+                        <td data-title="recipe_name">{{ instance.recipe_name }}</td>
                         <td data-title="Appearance">
                             <img src="{{ instance.image.url }}"></img>
                         </td>

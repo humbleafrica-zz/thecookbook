@@ -1,9 +1,10 @@
-{% extends 'recipes/base.html' %} {% block content %} {% block title %} The Kingdom of Food Lovers {% endblock %}
+{% extends 'recipes/base.html' %} {% block content %} {% block title %} TRD - The Kingdom of Food Lovers {% endblock %}
 
 <body>
     <div class="container wrapper">
-        <h1 class="header-index">Join Us</h1>
+
         <form class="signupForm" method="POST" action="{{ recipe_delete }}." class="row"> {% csrf_token %}
+            <h1 class="col header-index">Join Us</h1>
             <div class="row container-fluid delrecipe">
                 {{ form.as_p }}
             </div>

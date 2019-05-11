@@ -1,13 +1,15 @@
-{% extends 'recipes/base.html' %} {% block content %} {% block title %}{{ recipe }} Details {% endblock %}
+{% extends 'recipes/base.html' %} {% block content %} {% block title %}{% for instance in object_list %}{{ instance.recipe_name }}{% endfor %} {% endblock %}
 
 <body>
     <div class="container wrapper">
-        <h2 class="header-index">{{ instance.name }} Details</h2>
+        {% for instance in object_list %}
+        <h2 class="header-index">{{ instance.recipe_name }}</h2>
+        {% endfor %}
         <div id="no-more-tables" class="col row">
             {% if error_message %}
             <div class="col"> {{ error_message}}</div>
             {% endif %}
-            <table class="table recipe-detail table-dark  table-condensed">
+            <table id="dataTable"  class="table recipe-detail table-dark  table-condensed">
                 <thead>
                     <tr>
                         <th scope="col">Meal No.</th>
@@ -24,13 +26,17 @@
                     {% for instance in object_list %}
                     <tr>
                         <td data-title="Number">{{ instance.pk }}</td>
-                        <td data-title="Name"><a href="/recipes/recipe/detail/{{ instance.pk}}/">{{ instance.name }} </a></td>
+                        <td data-title="Name">{{ instance.recipe_name }}</td>
                         <td data-title="Serves">{{ instance.serves }}</td>
-                        <td data-title="Scalable">{{ instance.scalable }}</td>
+                        {%if instance.scalable == True %}
+                        <td data-title="Scalable">Yes</td>
+                        {% else %}
+                        <td data-title="Scalable">No</td>
+                        {% endif%}
                         <td data-title="Suits">{{ instance.recipe_type }}</td>
                         <td data-title="Difficulty">{{ instance.difficulty }}</td>
                         <td data-title="Suits">{{ instance.suits }}</td>
-                        <td data-title="Cuisine">{{ instance.cuisine }}</td>
+                        <td data-title="Cuisine">{{ instance.cuisine }} - {{ instance.country }}</td>
                     </tr>
                     <tr>
                         <td colspan="3" data-title="Image">
@@ -48,7 +54,15 @@
                             </tr>
                         </td>
                     </tr>
-                    {% endfor %}
+                    {% if request.user.is_authenticated %}
+                    <form action="{% url 'like_recipe' %}" method="post">
+                        {%csrf_token%} {% if is_liked %}
+                        <button type="submit" name="recipe_id" value="{{ instance.pk }}" class="btn btn-success" /><i class="fas fa-heart"></i> {{ total_likes }}</button>
+                        {% else %}
+                        <button type="submit" name="recipe_id" value="{{ instance.pk }}" class="btn btn-danger" /><i class="fas fa-heart"></i> {{ total_likes }}</button>
+                        {% endif %}
+                    </form>
+                    {% endif %} {% endfor %}
                 </tbody>
             </table>
         </div>

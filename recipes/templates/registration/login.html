@@ -2,7 +2,7 @@
 
 <body>
 
-    <p>Your username and password didn't match. Please divy again.</p>
+    <p>Your username and password didn't match. Please again.</p>
     {% endif %} {% if next %} {% if user.is_authenticated %}
     <p>Your account doesn't have access to this page. To proceed, please login with an account that has access.</p>
     {% else %}
@@ -10,6 +10,7 @@
     {% endif %} {% endif %}
 
     <form class="loginform" method="post" action="{% url 'login' %}">
+        <h1 class="col header-index">Login</h1>
         <div class="container wrapper">
             <div class="col">
                 <div class="row">

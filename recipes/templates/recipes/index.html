@@ -1,9 +1,11 @@
 {% extends 'recipes/base.html' %} {% block content %}
+
 <body>
     <div class="container wrapper">
         <br/>
         <h1 class="header-index">Because the way to one's heart,</h1>
         <div class="row">
+            {% if request.user.is_authenticated %}
             <div class="breakfast meal col" onclick="document.location='{% url 'breakfast' %}'">
                 <p class="food">
                     Breakfast
@@ -19,6 +21,23 @@
                     Dinner
                 </p>
             </div>
+            {% else %}
+            <div class="breakfast meal col" onclick="document.location='{% url 'login' %}'">
+                <p class="food">
+                    Breakfast
+                </p>
+            </div>
+            <div class="lunch meal col" onclick="document.location='{% url 'login' %}'">
+                <p class="food">
+                    Lunch
+                </p>
+            </div>
+            <div class="dinner meal col" onclick="document.location='{% url 'login' %}'">
+                <p class="food">
+                    Dinner
+                </p>
+            </div>
+            {% endif %}
         </div>
         <div class='row caed'>
             <a href="/recipes/recipe_add/"><button type="button" class="dbuttons btn btn-success">Add</button></a>

@@ -4,11 +4,7 @@ from django.utils import timezone
 from django.db import models
 from django.conf.urls import include, url
 from django.core.urlresolvers import reverse
-#from django_countries.fields import CountryField
-
-#from django.urls import reverse
-
-#from django.urls import reverse
+from django.contrib.auth.models import User
 # Create your models here.
 
         
@@ -114,7 +110,7 @@ class Recipe(models.Model):
     
      # DATABASE FIELDS
     user = models.ForeignKey(settings.AUTH_USER_MODEL, editable = False)
-    name = models.CharField(max_length=200)
+    recipe_name = models.CharField(max_length=200)
     method = models.CharField(max_length=50)
     serves = models.IntegerField()
     scalable = models.BooleanField(default=True)
@@ -135,7 +131,7 @@ class Recipe(models.Model):
     notes = models.TextField(max_length=1500, blank=True)
     country = models.CharField(max_length=50)
     author = models.CharField(max_length=50)
-    likes = models.ManyToManyField(settings.AUTH_USER_MODEL, blank=True, related_name='post_likes')
+    likes = models.ManyToManyField(User, blank=True, related_name='likes')
 
     
     # meta class
@@ -146,22 +142,12 @@ class Recipe(models.Model):
     # to string method
     def __str__(self):
          self.save()
-         return self.name
-         
+         return self.recipe_name
+    
+    def total_likes(self):
+        return self.likes.count()
+        
+        
     # absolute url method
     def get_absolute_url(self):
         return reverse('detail', kwargs={'pk': self.pk})
-        
-        
-'''class Country(models.Model):
-    recipe = models.ForeignKey(Recipe,on_delete=models.CASCADE)
-    country = CountryField()'''
-    
-class Profile(models.Model):
-    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete = models.CASCADE)
-    
-    def __str__(self):
-        return "User Profile {}".format(self.user.username)
-        
-    
-    

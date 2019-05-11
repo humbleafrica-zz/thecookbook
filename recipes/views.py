@@ -2,6 +2,7 @@ from django.shortcuts import render, render_to_response,  get_object_or_404, red
 from django.utils import timezone #importing the timezone model
 from datetime import datetime, timedelta # import to filter new recipes
 from .models import Recipe #importing the recipe model
+from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse_lazy
 from django.db.models import Q 
 from forms import RecipeForm #RawRecipeForm
@@ -120,10 +121,28 @@ def canape(request):
 #recipe_detail view###################################################
 def recipe_detail(request,pk):
     queryset = Recipe.objects.filter(pk=pk)
+    recipe = get_object_or_404(Recipe, pk=pk)
+    is_liked = False
+    if recipe.likes.filter(id=request.user.id).exists():
+        is_liked = True
     context={
-        "object_list": queryset
+        "object_list": queryset,
+        'is_liked' : is_liked,
+        'total_likes': recipe.total_likes(),
     }
     return render(request, 'recipes/detail.html', context)
+    
+#recipe_like view###################################################
+def like_recipe(request):
+    name = get_object_or_404(Recipe, id=request.POST.get('recipe_id'))
+    is_liked = False
+    if name.likes.filter(id=request.user.id).exists():
+        name.likes.remove(request.user)
+        is_liked = False
+    else:
+        name.likes.add(request.user)
+        is_liked = True
+    return HttpResponseRedirect(name.get_absolute_url())
 
 #recipe_preparationview###################################################
 def preparation(request,pk):
@@ -203,9 +222,10 @@ def register(request):
     return render(request, 'registration/reg_form.html', context)
 
 def NewRecipe(request):
-    #queryset = Recipe.objects.all(uploaded_date = 'date.today() - monthdelta(1)')
-    queryset = Recipe.objects.filter(created_at__month=current_month)
+    queryset = Recipe.objects.all(uploaded_date = 'date.today() - monthdelta(1)')
+    #queryset = Recipe.objects.filter(created_at__month=current_month)
     context ={
         'newrecipes': queryset,
     }
     return render(request, 'recipes/base.html', context)
+    
