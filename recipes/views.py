@@ -7,8 +7,7 @@ from django.core.urlresolvers import reverse_lazy
 from django.db.models import Q 
 from forms import RecipeForm #RawRecipeForm
 from django.contrib.auth.forms import UserCreationForm #import to use the builtin user creation form
-from rest_framework.views import APIView  #rest framework
-from rest_framework.response import Response #rest framework
+
 
 
 #index view###################################################
