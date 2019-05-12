@@ -2,14 +2,12 @@
 
 <body>
     <div class="container wrapper">
-        <form method="POST" action="{{ recipe_add }}." class="addform row" enctype="multipart/form-data"> {% csrf_token %}
+        <form method="POST" action="{{ recipe_add }}" class="addform row" enctype="multipart/form-data"> {% csrf_token %}
             <h1 class="col header-index">Add A New Recipe</h1>
             <div class="row container-fluid addrecipe">
                 {{ form.as_p }}
             </div>
-            <div class="text-right">
-                <input class="btn btn-success" type="submit" value="Save" />
-            </div>
+                <input class="btn btn-success" type="submit" value="Save"/>
         </form>
     </div>
 </body>

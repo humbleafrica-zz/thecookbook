@@ -13,7 +13,8 @@ from . views import(
     preparation,
     register,
     like_recipe,
-    get_recipe_data,)
+    get_recipe_data,
+    get_allergy_data,)
 
 urlpatterns = [
     url(r'^$', views.index, name='index'),
@@ -29,6 +30,7 @@ urlpatterns = [
     url(r'^recipes/recipe_delete/(?P<pk>[0-9]+)/$', views.recipe_delete, name='recipe_delete'),
     url(r'^register/$', views.register, name='register'),
     url(r'^like/$', views.like_recipe, name='like_recipe'),
-    url(r'^api/data/$', views.get_recipe_data, name='get_recipe_data'),
+    url(r'^api/recipe_data/$', views.get_recipe_data, name='get_recipe_data'),
+    url(r'^api/cuisine_data/$', views.get_cuisine_data, name='get_cuisine_data'),
+    url(r'^api/allergy_data/$', views.get_allergy_data, name='get_allergy_data'),
 ]
-

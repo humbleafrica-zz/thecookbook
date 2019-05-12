@@ -121,7 +121,7 @@ h6 {
     color: #f1f1f1;
     font-weight: bold;
     text-shadow: 1px 1px #000000;
-    margin: .5em 0em 0em 6em;
+    margin: 10px auto;
 }
 
 .table-dark {
@@ -163,7 +163,6 @@ tr td img {
         color: #f1f1f1;
         font-weight: bold;
         text-shadow: 1px 1px #000000;
-        margin: .5em 0em 0em 6em;
     }
     
     .logo {
@@ -174,6 +173,8 @@ tr td img {
         left: 38%;
 
     }
+}
+
     /* Force table to not be like tables anymore */
     #no-more-tables table,
     #no-more-tables thead,
@@ -316,10 +317,10 @@ form {
     bottom: -1px !important;
     width: 100%;
     background: #343A40;
-    color: #EEE;
+    color: #ffffff;
     padding: 5px;
     min-height: 80px;
-    opacity: .5;
+    opacity: .9;
     border-top: 3px solid #000000;
     margin-bottom: 0;
     text-align: center;

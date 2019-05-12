@@ -111,7 +111,6 @@ class Recipe(models.Model):
      # DATABASE FIELDS
     user = models.ForeignKey(settings.AUTH_USER_MODEL, editable = False)
     recipe_name = models.CharField(max_length=200)
-    method = models.CharField(max_length=50)
     serves = models.IntegerField()
     scalable = models.BooleanField(default=True)
     prep_time = models.IntegerField(u"Prep Min")
@@ -127,22 +126,22 @@ class Recipe(models.Model):
     cuisine = models.CharField('cuisine', max_length = 20, choices = CUISINE_CHOICE)
     uploaded_date = models.DateField((u"Date Uploaded"), auto_now=False, auto_now_add=True, editable = False)
     update = models.DateField((u"Last Updated"), auto_now=True,auto_now_add=False, editable = False)
-    image = models.ImageField(upload_to='images/',blank=True)
-    notes = models.TextField(max_length=1500, blank=True)
+    image = models.ImageField(upload_to='images/')
+    notes = models.TextField(max_length=1500, blank=False)
     country = models.CharField(max_length=50)
-    author = models.CharField(max_length=50)
+    author = models.CharField(max_length=50, blank = False)
     likes = models.ManyToManyField(User, blank=True, related_name='likes')
 
-    
+    def __str__(self):
+        self.save()
+        return self.recipe_name
     # meta class
     class Meta:
         verbose_name = 'recipe'
         verbose_name_plural = 'recipes'
     
     # to string method
-    def __str__(self):
-         self.save()
-         return self.recipe_name
+   
     
     def total_likes(self):
         return self.likes.count()

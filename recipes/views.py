@@ -2,9 +2,9 @@ from django.shortcuts import render, render_to_response,  get_object_or_404, red
 from django.utils import timezone #importing the timezone model
 from datetime import datetime, timedelta # import to filter new recipes
 from .models import Recipe #importing the recipe model
+from django.http import HttpResponseRedirect
 from django.http import JsonResponse
 from django.core.urlresolvers import reverse_lazy
-from django.db.models import Q 
 from forms import RecipeForm #RawRecipeForm
 from django.contrib.auth.forms import UserCreationForm #import to use the builtin user creation form
 
@@ -19,20 +19,61 @@ def index(request):
     }
     return render(request, 'recipes/index.html', context)
 
+###recipe data for chart####
 def get_recipe_data(request):
     recipes = Recipe.objects.all().count()
-    breakfasts = Recipe.objects.filter(recipe_type='BREAKFAST').count()
-    lunches = Recipe.objects.filter(recipe_type='LUNCH').count()
-    dinnners = Recipe.objects.filter(recipe_type='DINNER').count()
-
-    data = {
-        'recipes': recipes,
-        'breakfasts': breakfasts,
-        'lunches': lunches,
-        'dinnners': dinnners,
+    b = Recipe.objects.filter(recipe_type='BREAKFAST').count()
+    l = Recipe.objects.filter(recipe_type='LUNCH').count()
+    d = Recipe.objects.filter(recipe_type='DINNER').count()
+    
+    labels=['BRK','LUN', 'DIN']
+    default_items =[b, l, d]
+    
+    recipe_data = {
+       'labels': labels,
+       'default' : default_items,
     }
-    return JsonResponse(data)
+    return JsonResponse(recipe_data)
+    
+######cuidine dat for charts##### 
+def get_cuisine_data(request):
+    
+    af = Recipe.objects.filter(cuisine='AFRICAN').count()
+    am = Recipe.objects.filter(cuisine='AMERICAN').count()
+    at = Recipe.objects.filter(cuisine='ASIAN').count()
+    au = Recipe.objects.filter(cuisine='AUSTRALIAN').count()
+    ca = Recipe.objects.filter(cuisine='CARIBBEAN').count()
+    eu = Recipe.objects.filter(cuisine='EUROPEAN').count()
+    me = Recipe.objects.filter(cuisine='MEDITERRANEAN').count()
+    
+    labels=['AFR','AMR','ASI', 'AUS','CAR','EUR', 'MED']
+    default_items =[af, am, at, au, ca, eu, me]
 
+    cuisine_data = {
+        'labels': labels,
+        'default' : default_items,
+    }
+    return JsonResponse(cuisine_data)
+
+#######allergy filter ##########
+def get_allergy_data(request):
+    mk = Recipe.objects.filter(allergy='MILK').count()
+    eg = Recipe.objects.filter(allergy='EGG').count()
+    nu = Recipe.objects.filter(allergy='NUT').count()
+    so = Recipe.objects.filter(allergy='SOYA').count()
+    wh = Recipe.objects.filter(allergy='WHEAT').count()
+    fi = Recipe.objects.filter(allergy='FISH').count()
+    po = Recipe.objects.filter(allergy='PORK').count()
+    
+    labels=['Milk','Egg','Nut', 'Soya','Wheat','Fish', 'Pork']
+    default_items =[mk, eg, nu, so, wh, fi, po]
+    
+    allergy_data = {
+        'labels': labels,
+        'default' : default_items,
+    }
+    return JsonResponse(allergy_data)
+    
 #breakfast view###################################################
 def breakfast(request):
     queryset = Recipe.objects.filter(recipe_type='BREAKFAST')
@@ -237,12 +278,3 @@ def register(request):
     }
     
     return render(request, 'registration/reg_form.html', context)
-
-def NewRecipe(request):
-    queryset = Recipe.objects.all(uploaded_date = 'date.today() - monthdelta(1)')
-    #queryset = Recipe.objects.filter(created_at__month=current_month)
-    context ={
-        'newrecipes': queryset,
-    }
-    return render(request, 'recipes/base.html', context)
-    
