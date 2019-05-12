@@ -9,7 +9,7 @@
             {% if error_message %}
             <div class="col"> {{ error_message}}</div>
             {% endif %}
-            <table id="dataTable"  class="table recipe-detail table-dark  table-condensed">
+            <table class="table recipe-detail table-dark  table-condensed">
                 <thead>
                     <tr>
                         <th scope="col">Meal No.</th>
@@ -51,6 +51,7 @@
                                 <a href="/recipes/recipe/recipe_update/{{ instance.pk }}/"><button type="button" class="dbuttons btn btn-warning">Edit</button></a>
                                 <a href="/recipes/recipe_add/"><button type="button" class="dbuttons btn btn-success">Add</button></a>
                                 <a href="/recipes/recipe_delete/{{ instance.pk }}/"><button type="button" class="dbuttons btn btn-danger">Delete</button></a>
+                                <button type="button" class="dbuttons btn btn-primary" onClick="javascript:history.go(-1);">Back</button>
                             </tr>
                         </td>
                     </tr>

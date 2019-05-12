@@ -1,6 +1,6 @@
 from django.conf.urls import url, include
 from . import views
-from recipes.views import(
+from . views import(
     index,
     breakfast,
     lunch,
@@ -12,7 +12,8 @@ from recipes.views import(
     recipes,
     preparation,
     register,
-    like_recipe,)
+    like_recipe,
+    get_recipe_data,)
 
 urlpatterns = [
     url(r'^$', views.index, name='index'),
@@ -28,5 +29,6 @@ urlpatterns = [
     url(r'^recipes/recipe_delete/(?P<pk>[0-9]+)/$', views.recipe_delete, name='recipe_delete'),
     url(r'^register/$', views.register, name='register'),
     url(r'^like/$', views.like_recipe, name='like_recipe'),
+    url(r'^api/data/$', views.get_recipe_data, name='get_recipe_data'),
 ]
 

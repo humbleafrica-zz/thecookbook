@@ -1,5 +1,21 @@
+// Material Design example
 $(document).ready(function() {
-    $('#dtBasic').DataTable();
+    $('#dtBasic ').DataTable();
+    $('#dtBasic_wrapper').find('label').each(function() {
+        $(this).parent().append($(this).children());
+    });
+    $('#dtBasic_wrapper .dataTables_filter').find('input').each(function() {
+        $('input').attr("placeholder", "Search");
+        $('input').removeClass('form-control-sm');
+    });
+    $('#dtBasic_wrapper .dataTables_length').addClass('d-flex flex-row');
+    $('#dtBasic_wrapper .dataTables_filter').addClass('md-form');
+    $('#dtBasic_wrapper select').removeClass(
+        'custom-select custom-select-sm form-control form-control-sm');
+    $('#dtBasic_wrapper select').addClass('mdb-select');
+    $('#dtBasic_wrapper .mdb-select').dtBasic();
+    $('#dtBasic_wrapper .dataTables_filter').find('label').remove();
+
     $('.dataTables_length').addClass('bs-select');
 
     /*built in form render styling*/

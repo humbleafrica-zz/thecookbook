@@ -2,19 +2,37 @@ from django.shortcuts import render, render_to_response,  get_object_or_404, red
 from django.utils import timezone #importing the timezone model
 from datetime import datetime, timedelta # import to filter new recipes
 from .models import Recipe #importing the recipe model
-from django.http import HttpResponseRedirect
+from django.http import JsonResponse
 from django.core.urlresolvers import reverse_lazy
 from django.db.models import Q 
 from forms import RecipeForm #RawRecipeForm
 from django.contrib.auth.forms import UserCreationForm #import to use the builtin user creation form
+from rest_framework.views import APIView  #rest framework
+from rest_framework.response import Response #rest framework
 
 
 #index view###################################################
 def index(request):
+    queryset = Recipe.objects.all()
     context={
+        "object_list": queryset,
         'index': 'active'
     }
     return render(request, 'recipes/index.html', context)
+
+def get_recipe_data(request):
+    recipes = Recipe.objects.all().count()
+    breakfasts = Recipe.objects.filter(recipe_type='BREAKFAST').count()
+    lunches = Recipe.objects.filter(recipe_type='LUNCH').count()
+    dinnners = Recipe.objects.filter(recipe_type='DINNER').count()
+
+    data = {
+        'recipes': recipes,
+        'breakfasts': breakfasts,
+        'lunches': lunches,
+        'dinnners': dinnners,
+    }
+    return JsonResponse(data)
 
 #breakfast view###################################################
 def breakfast(request):

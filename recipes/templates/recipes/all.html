@@ -5,7 +5,11 @@
         <h1 class="header-index">Because the way to one's heart</h1>
         <h1 class="header-index">is via food</h1>
         <div id="no-more-tables" class="col row">
-            <table id="dataTable"  class="table table-dark  recipe-detail table-condensed">
+            <div class="col">
+                <a href="/recipes/recipe_add/"><button type="button" class="dbuttons btn btn-success">Add</button></a>
+                <button type="button" class="dbuttons btn btn-primary" onClick="javascript:history.go(-1);">Back</button>
+            </div>
+            <table id="dtBasic" class="table table-dark  recipe-detail table-condensed">
                 <thead>
                     <tr>
                         <th scope="col">Meal No.</th>

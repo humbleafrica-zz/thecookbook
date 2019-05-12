@@ -2,14 +2,15 @@
 
 <body>
     <div class="container wrapper">
-        
+
         <form method="POST" action="{{ recipe_delete }}." class="row"> {% csrf_token %}
-        <h1 class="col header-index">Edit This Recipe</h1>
+            <h1 class="col header-index">Edit This Recipe</h1>
             <div class="row container-fluid delrecipe">
                 {{ form.as_p }}
             </div>
             <div class="text-right">
-            <input class="col btn btn-warning" type="submit" value="Update" />
+                <input class="col btn btn-warning" type="submit" value="Update" />
+                <input class="col btn btn-primary" value="Back" onClick="javascript:history.go(-1);"/>
             </div>
         </form>
     </div>
