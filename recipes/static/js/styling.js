@@ -143,7 +143,6 @@ $(document).ready(function() {
     $('#dtBasic_wrapper select').removeClass(
         'custom-select custom-select-sm form-control form-control-sm');
     $('#dtBasic_wrapper select').addClass('mdb-select');
-    $('#dtBasic_wrapper .mdb-select').dtBasic();
     $('#dtBasic_wrapper .dataTables_filter').find('label').remove();
 
     $('.dataTables_length').addClass('bs-select');

@@ -118,7 +118,7 @@ class Recipe(models.Model):
     description = models.TextField(max_length=4000)
     ingredients = models.TextField(max_length=1500)
     instructions = models.TextField(max_length=15000)
-    suits = models.CharField(max_length=20)
+    suits = models.CharField(max_length=10)
     publisher = models.CharField("publisher", max_length = 20, choices = PUBLISHER_CHOICE)
     allergy = models.CharField("allergy", max_length = 20, choices = ALERGY_CHOICE)
     difficulty = models.CharField("difficulty", max_length = 10, choices = DIFF_TYPE_CHOICES)
