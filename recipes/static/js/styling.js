@@ -6,7 +6,7 @@ $(document).ready(function() {
     var recipe_data = 'api/recipe_data/' // {% url "get_recipe_data" %}
     var allergy_data = 'api/allergy_data/' // {% url "get_recipe_data" %}
     
-    var colorHex = ['Purple', 'Gray', 'Red', 'Green', 'Yellow', 'Blue', 'Turquoise']
+    var colorHex = ['#006344', '#BD3B1B', '#D8A800', '#B6C61B', 'Yellow', '#B9D870', '#40E0D0']
 
     var defaultData = []
     var labels = []
@@ -28,7 +28,7 @@ $(document).ready(function() {
                     datasets: [{
                         backgroundColor: colorHex,
                         borderWidth: .5,
-                        borderColor: 'white',
+                        borderColor: 'black',
                         data: defaultData,
                     }]
                 },
@@ -39,7 +39,7 @@ $(document).ready(function() {
                     legend: {
                         labels: {
                             // This more specific font property overrides the global property
-                            fontColor: 'white',
+                            fontColor: '#ffffff',
                             fontSize: 10,
                         },
                         position: 'left',
@@ -61,13 +61,13 @@ $(document).ready(function() {
             var rec = document.getElementById('myChart1');
 
             var myPieChart = new Chart(rec, {
-                type: 'pie',
+                type: 'doughnut',
                 data: {
                     labels: labels,
                     datasets: [{
                         backgroundColor: colorHex,
                         borderWidth: .5,
-                        borderColor: 'white',
+                        borderColor: 'black',
                         data: defaultData,
                     }]
                 },
@@ -100,13 +100,13 @@ $(document).ready(function() {
             var all = document.getElementById('myChart2');
 
             var myPieChart = new Chart(all, {
-                type: 'pie',
+                type: 'doughnut',
                 data: {
                     labels: labels,
                     datasets: [{
                         backgroundColor: colorHex,
                         borderWidth: .5,
-                        borderColor: 'white',
+                        borderColor: 'black',
                         data: defaultData,
                     }]
                 },
@@ -149,15 +149,15 @@ $(document).ready(function() {
     $('.dataTables_length').addClass('bs-select');
 
     /*#############built in form render styling#################*/
-    $(
-        "#id_username, #id_password1, #id_password2, #id_name, #id_serves, #id_prep_time, #id_cook_time, #id_description, #id_ingredients, #id_instructions, #id_suits, #id_calories, #id_fat, #id_saturates, #id_carbs, #id_sugars, #id_fibre, #id_protein, #id_salt, #id_publisher, #id_allergy, #id_difficulty, #id_recipe_type, #id_cuisine, #id_published_date, #id_uploaded_date, #id_update, #id_image, #id_notes"
+  /*  $(
+        "#id_username, #id_password1, #id_password2, #id_scalable, #id_name, #id_serves, #id_prep_time, #id_cook_time, #id_description, #id_ingredients, #id_instructions, #id_suits, #id_calories, #id_fat, #id_saturates, #id_carbs, #id_sugars, #id_fibre, #id_protein, #id_salt, #id_publisher, #id_allergy, #id_difficulty, #id_recipe_type, #id_cuisine, #id_published_date, #id_uploaded_date, #id_update, #id_image, #id_notes"
     ).addClass("frow");
 
-    $('form p').addClass(
+    $('div p').addClass(
         'col'
     );
 
     $('#id_username, #id_password1, #id_password2').addClass(
         'row'
-    );
+    );*/
 });

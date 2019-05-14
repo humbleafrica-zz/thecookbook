@@ -187,6 +187,7 @@ def recipe_detail(request,pk):
         "object_list": queryset,
         'is_liked' : is_liked,
         'total_likes': recipe.total_likes(),
+        'recipe':recipe,
     }
     return render(request, 'recipes/detail.html', context)
     
@@ -214,6 +215,8 @@ def preparation(request,pk):
 def recipe_add(request):
     form = RecipeForm(request.POST or None)
     if form.is_valid():
+        pic = form.cleaned_data['image']
+        user= request.user
         form.save()
         form = RecipeForm()
     context ={

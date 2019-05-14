@@ -39,10 +39,34 @@
             </div>
             {% endif %}
         </div>
-        <div class='row caed'>
-            <a href="/recipes/recipe_add/"><button type="button" class="dbuttons btn btn-success">Add</button></a>
-        </div>
         <h1 class="header-index">is via food</h1>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm favourites">
+                    <h6>
+                        Cuisine Types
+                    </h6>
+                    <canvas id="myChart">
+        </canvas>
+                </div>
+                <div class="col-sm favourites">
+                    <h6>
+                        Recipe Types
+                    </h6>
+                    <canvas id="myChart1">
+        </canvas>
+                </div>
+                <div class="col-sm favourites">
+                    <h6>
+                        Allergy Types
+                    </h6>
+                    <canvas id="myChart2">
+        </canvas>
+                </div>
+
+            </div>
+        </div>
+
     </div>
 </body>
 {% endblock %}

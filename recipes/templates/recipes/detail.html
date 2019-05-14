@@ -40,27 +40,27 @@
                     </tr>
                     <tr>
                         <td colspan="3" data-title="Image">
-                            <a href="/recipes/recipe/detail/{{ instance.pk }}/">
+                            <a href="../{{ instance.pk }}/">
                             <img height="auto" src="{{ instance.image.url }}"></img>
                             </a>
                         </td>
                         <td colspan="7" data-title="Description">
                             {{ instance.description }}
                             <tr>
-                                <a href="/recipes/recipe/preparation/{{ instance.pk }}/"><button type="button" class="dbuttons btn btn-dark">Cook</button></a>
-                                <a href="/recipes/recipe/recipe_update/{{ instance.pk }}/"><button type="button" class="dbuttons btn btn-warning">Edit</button></a>
-                                <a href="/recipes/recipe_add/"><button type="button" class="dbuttons btn btn-success">Add</button></a>
-                                <a href="/recipes/recipe_delete/{{ instance.pk }}/"><button type="button" class="dbuttons btn btn-danger">Delete</button></a>
-                                <button type="button" class="dbuttons btn btn-primary" onClick="javascript:history.go(-1);">Back</button>
+                                <a href="../preparation/{{ instance.pk }}/"><input type="button" class="dbuttons btn btn-dark" Value="Cook"/></a>
+                                <a href="../recipe_update/{{ instance.pk }}/"><input type="button" class="dbuttons btn btn-warning" Value="Edit"/></a>
+                                <a href="../recipe_add/"><input type="button" class="dbuttons btn btn-success" Value="Add"/></a>
+                                <a href="../recipe_delete/{{ instance.pk }}/"><input type="button" class="dbuttons btn btn-danger" Value="Delete"/></a>
+                                <input type="button" onClick="javascript:history.go(-1);" class="dbuttons btn btn-primary" Value="Back" />
                             </tr>
                         </td>
                     </tr>
                     {% if request.user.is_authenticated %}
                     <form action="{% url 'like_recipe' %}" method="post">
                         {%csrf_token%} {% if is_liked %}
-                        <button type="submit" name="recipe_id" value="{{ instance.pk }}" class="btn btn-success" /><i class="fas fa-heart"></i> {{ total_likes }}</button>
+                        <button type="submit" name="recipe_id" value="{{ instance.pk }}" class="dbuttons btn btn-success" /><i class="fas fa-heart"></i> {{ total_likes }}</button>
                         {% else %}
-                        <button type="submit" name="recipe_id" value="{{ instance.pk }}" class="btn btn-danger" /><i class="fas fa-heart"></i> {{ total_likes }}</button>
+                        <button type="submit" name="recipe_id" value="{{ instance.pk }}" class="dbuttons btn btn-danger" /><i class="fas fa-heart"></i> {{ total_likes }}</button>
                         {% endif %}
                     </form>
                     {% endif %} {% endfor %}

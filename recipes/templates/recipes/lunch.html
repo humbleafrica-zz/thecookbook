@@ -5,7 +5,7 @@
         <h1 class="header-index">Afternoon Meals,</h1>
         <div id="no-more-tables" class="col row recipe-detail ">
             <div class="col">
-                <a href="/recipes/recipe_add/"><button type="button" class="dbuttons btn btn-success">Add</button></a>
+                <a href="../recipe_add/"><button type="button" class="dbuttons btn btn-success">Add</button></a>
                 <button type="button" class="dbuttons btn btn-primary" onClick="javascript:history.go(-1);">Back</button>
             </div>
             <table id="dtBasic" class="table recipe-detail table-dark  table-condensed">
@@ -26,9 +26,9 @@
                     <tr>
                         <td data-title="Number">{{ instance.pk }}</td>
                         <td data-title="Name">
-                            <a href="/recipes/recipe/detail/{{ instance.pk}}/">{{ instance.recipe_name }}</a>
+                            <a href="../{{ instance.pk}}">{{ instance.recipe_name }}</a>
                         </td>
-                        <td data-title="Appearance"><a href="/recipes/recipe/detail/{{ instance.pk }}/">
+                        <td data-title="Appearance"><a href="../{{ instance.pk }}">
                             <img src="{{ instance.image.url}}"></img></a>
                         </td>
                         <td data-title="Suits">{{ instance.recipe_type }}</td>
@@ -36,9 +36,9 @@
                         <td data-title="Suits">{{ instance.suits }}</td>
                         <td data-title="Cuisine">{{ instance.cuisine }}</td>
                         <td data-title="Action" class="col">
-                            <a href="/recipes/recipe/preparation/{{ instance.pk }}/"><button type="button" class="dbuttons btn btn-dark">Cook</button></a>
-                            <a href="/recipes/recipe/recipe_update/{{ instance.pk }}/"><button type="button" class="dbuttons btn btn-warning">Edit</button></a>
-                            <a href="/recipes/recipe_delete/{{ instance.pk }}/"><button type="button" class="dbuttons btn btn-danger">Delete</button></a>
+                            <a href="../preparation/{{ instance.pk }}/"><button type="button" class="dbuttons btn btn-dark">Cook</button></a>
+                            <a href="../recipe_update/{{ instance.pk }}/"><button type="button" class="dbuttons btn btn-warning">Edit</button></a>
+                            <a href="../recipe_delete/{{ instance.pk }}/"><button type="button" class="dbuttons btn btn-danger">Delete</button></a>
                         </td>
                     </tr>
                     {% endfor %}

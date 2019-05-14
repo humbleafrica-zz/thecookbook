@@ -58,8 +58,12 @@ h6 {
 }
 
 .dbuttons {
-    margin: 5px auto;
-   padding: 5px ;
+    margin: 5px 2px;
+    padding: 5px;
+}
+
+.recipe_id {
+    padding: 2px 5px;
 }
 
 .logo {
@@ -128,6 +132,11 @@ h6 {
     opacity: .8;
 }
 
+.paginate_button {
+    margin: 2px;
+
+}
+
 .detail {
     color: #ffffff;
     text-shadow: 1px 1px #000000;
@@ -141,9 +150,15 @@ h6 {
 /*table image styling*/
 
 tr td img {
-    height: 70%;
-    width: 70%;
+    height: 50%;
+    width: 50%;
     border-radius: 5px;
+}
+
+textarea,
+select {
+    border-radius: 5px;
+
 }
 
 /* ############# styling mobile ################*/
@@ -164,7 +179,7 @@ tr td img {
         font-weight: bold;
         text-shadow: 1px 1px #000000;
     }
-    
+
     .logo {
         position: absolute;
         top: 90px;
@@ -175,69 +190,72 @@ tr td img {
     }
 }
 
-    /* Force table to not be like tables anymore */
-    #no-more-tables table,
-    #no-more-tables thead,
-    #no-more-tables tbody,
-    #no-more-tables th,
-    #no-more-tables td,
-    #no-more-tables tr {
-        display: block;
-    }
+/* Force table to not be like tables anymore */
 
-    /* Hide table headers (but not display: none;, for accessibility) */
-    #no-more-tables thead tr {
-        position: absolute;
-        top: -9999px;
-        left: -9999px;
-    }
+#no-more-tables table,
+#no-more-tables thead,
+#no-more-tables tbody,
+#no-more-tables th,
+#no-more-tables td,
+#no-more-tables tr {
+    display: block;
+}
 
-    #no-more-tables tr {
-        border: 1px solid #ccc;
-    }
+/* Hide table headers (but not display: none;, for accessibility) */
 
-    #no-more-tables td {
-        /* Behave like a "row" */
-        border: none;
-        border-bottom: 1px solid #eee;
-        position: relative;
-        padding-left: 50%;
-        white-space: normal;
-        text-align: left;
-    }
+#no-more-tables thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+}
 
-    #no-more-tables td:before {
-        /* Now like a table header */
-        position: absolute;
-        /* Top/left values mimic padding */
-        top: 6px;
-        left: 6px;
-        width: 45%;
-        white-space: nowrap;
-        text-align: left;
-        font-weight: bold;
-    }
+#no-more-tables tr {
+    border: 1px solid #ccc;
+}
 
-    /*
+#no-more-tables td {
+    /* Behave like a "row" */
+    border: none;
+    border-bottom: 1px solid #eee;
+    position: relative;
+    padding-left: 50%;
+    white-space: normal;
+    text-align: left;
+}
+
+#no-more-tables td:before {
+    /* Now like a table header */
+    position: absolute;
+    /* Top/left values mimic padding */
+    top: 6px;
+    left: 6px;
+    width: 45%;
+    white-space: nowrap;
+    text-align: left;
+    font-weight: bold;
+}
+
+/*
         Label the data
         */
-    #no-more-tables td:before {
-        content: attr(data-title);
-    }
+
+#no-more-tables td:before {
+    content: attr(data-title);
 }
+
 
 
 /*#####login form styling##############*/
 
 .loginform {
     margin: 250px auto 10px auto;
-    padding: 0 !important;
+    padding: 10px;
     text-align: center;
 }
 
 .signupForm {
     margin: 50px auto 10px auto;
-    padding: 0 !important;
+    padding: 10px;
     text-align: left;
 }
 
@@ -248,7 +266,7 @@ tr td img {
 #id_password2 {
     margin: 2px;
     border: 1px solid #000000;
-    border-radius: 5px;
+
 }
 
 /*#######search bar styling */
@@ -300,9 +318,10 @@ form {
 }
 
 
-.frow {
-    max-width: 99%;
-}
+/*.frow {
+    padding: 1px;
+    border-radius: 5px;
+}*/
 
 .addrecipe,
 .delrecipe {
@@ -318,8 +337,7 @@ form {
     width: 100%;
     background: #343A40;
     color: #ffffff;
-    padding: 5px;
-    min-height: 80px;
+    min-height: 70px;
     opacity: .9;
     border-top: 3px solid #000000;
     margin-bottom: 0;
